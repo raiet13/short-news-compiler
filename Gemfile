@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'foreman', '~> 0.82.0'
 
-gem 'webpacker', github: 'rails/webpacker'
+gem 'webpacker', '~> 3.5'
 
 # Use Faraday for GET and POST
 gem 'faraday'

@@ -18,13 +18,28 @@ class FoodSearch extends React.Component {
     this.setState({
       searchValue: value,
     });
-
+  };
+  
+  handleOnSubmit = (e) => {
+    e.preventDefault();
+    const value = this.state.searchValue;
+    // fetch(`https://wip-learn-redux-project-compiler-confizzed13.c9users.io:8081/api/food?q=${value}/`,
+    // {
+    //   headers : { 
+    //     'Content-Type': 'application/json',
+    //     'Accept': 'application/json',
+    //     'Access-Control-Allow-Origin': '*'
+    //   }
+    // }
+    // ).then(response => console.log(response));
+    
+    
     Client.search(value, (foods) => {
       this.setState({
         foods: foods.slice(0, MATCHING_ITEM_LIMIT),
       });
     });
-  };
+  }
 
   handleSearchCancel = () => {
     this.setState({
@@ -58,13 +73,14 @@ class FoodSearch extends React.Component {
               <th colSpan='5'>
                 <div>
                   <div>
+                  <form onSubmit={this.handleOnSubmit}>
                     <input
                       type='text'
                       placeholder='Search foods...'
                       value={this.state.searchValue}
-                      onChange={this.handleSearchChange}
-                    />
-                    <i/>
+                      onChange={this.handleSearchChange} />
+                    <input type="submit" />
+                  </form>
                   </div>
                   <i
                     onClick={this.handleSearchCancel}

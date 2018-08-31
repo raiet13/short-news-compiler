@@ -13,7 +13,8 @@
       {
         "useBuiltIns": true
       }
-    ]
+    ],
+    "react"
   ],
   "plugins": [
     "@babel/plugin-transform-destructuring",

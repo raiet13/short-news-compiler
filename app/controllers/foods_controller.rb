@@ -2,6 +2,7 @@
 class FoodsController < ApplicationController
   def index
     q = params[:q]
+    puts "q = #{q}"
 
     if q.blank?
       render status: 400, json: { error: 'Expected parameter `q` '}

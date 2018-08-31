@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
-function search(query, cb) {
-  return fetch(`http://wip-learn-redux-project-compiler-confizzed13.c9.io:8081/api/food?q=${query}`,
+function search(query) {
+  return fetch(`https://wip-learn-redux-project-compiler-confizzed13.c9users.io:8081/api/food?q=${query}/`,
   {
       headers : { 
         'Content-Type': 'application/json',
@@ -10,17 +10,18 @@ function search(query, cb) {
 
     }
   ).then(checkStatus)
-    .then(
-      parseJSON,
-      console.log(parseJSON))
-    .then(cb);
+    .then(parseJSON)
+    .then(response => console.log(response));
 }
 
 function checkStatus(response) {
   console.log('check status : ', response);
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  }
+  return response;
+
+  // if (response.status >= 200 && response.status < 300) {
+  //   return response;
+  // }
+  
   // const error = new Error(`HTTP Error ${response.statusText}`);
   // error.status = response.statusText;
   // error.response = response;
