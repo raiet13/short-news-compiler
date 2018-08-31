@@ -9,7 +9,7 @@ React and Redux driven news site compiler. Application compiles news information
 
 - Linking Rails and React
     -> https://www.fullstackreact.com/articles/how-to-get-create-react-app-to-work-with-your-rails-api/
-    -> https://github.com/fullstackreact/food-lookup-demo/tree/master/client
+    -> https://github.com/fullstackreact/food-lookup-demo-rails
     -> https://ide.c9.io/confizzed13/learn-redux-fullstackreact-example#openfile-README.md
     
 - Labs with useful package.json dependencies and Gemfile gems
