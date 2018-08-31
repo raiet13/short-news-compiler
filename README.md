@@ -5,14 +5,16 @@ React and Redux driven news site compiler. Application compiles news information
 # Note : This is a WIP Workspace/Branch as the rails/react part is NOT WORKING at the moment
 
 
+'Invalid Host header' issue but somehow NOT an issue in the Fullstack version...
 
-Invalid Host header
 
 # Major Links Using
 
 - Invalid Host Header
-    -> https://stackoverflow.com/questions/43619644/i-am-getting-an-invalid-host-header-message-when-running-my-react-app-in-a-we
-    -> https://medium.com/webpack/webpack-dev-server-middleware-security-issues-1489d950874a
+    https://stackoverflow.com/questions/43619644/i-am-getting-an-invalid-host-header-message-when-running-my-react-app-in-a-we
+    https://medium.com/webpack/webpack-dev-server-middleware-security-issues-1489d950874a
+    https://github.com/facebook/create-react-app/issues/2271
+    https://github.com/gruntjs/grunt-contrib-connect/issues/25
 
 - Webpack-dev-server issues
     https://github.com/webpack/webpack-dev-server/issues/230
