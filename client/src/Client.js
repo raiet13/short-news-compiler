@@ -1,10 +1,11 @@
 /* eslint-disable no-undef */
 function search(query, cb) {
-  return fetch(`/api/food?q=${query}`,
+  return fetch(`http://wip-learn-redux-project-compiler-confizzed13.c9.io:8081/api/food?q=${query}`,
   {
       headers : { 
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Access-Control-Allow-Origin': '*'
        }
 
     }
