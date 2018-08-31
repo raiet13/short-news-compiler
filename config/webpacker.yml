@@ -38,10 +38,13 @@ development:
 
   # Reference: https://webpack.js.org/configuration/dev-server/
   dev_server:
-    https: true
-    host: 'wip-learn-redux-project-compiler-confizzed13.c9users.io'
-    port: 3035
-    public: 'https://wip-learn-redux-project-compiler-confizzed13.c9users.io:3035'
+    https: false
+    host: 'wip-learn-redux-project-compiler-confizzed13.c9users.io/'
+    port: 8081
+    proxy: {
+      '/api': 'http://wip-learn-redux-project-compiler-confizzed13.c9.io:8081'
+    }
+    public: 'http://wip-learn-redux-project-compiler-confizzed13.c9.io:8081'
     hmr: false
     # Inline should be set to true if using HMR
     inline: true
