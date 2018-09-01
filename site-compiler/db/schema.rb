@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180901004944) do
+ActiveRecord::Schema.define(version: 20180901010806) do
 
   create_table "posts", force: :cascade do |t|
     t.integer  "site_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20180901004944) do
     t.string   "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "api_url"
   end
 
 end
