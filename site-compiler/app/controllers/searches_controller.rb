@@ -1,5 +1,6 @@
 class SearchesController < ApplicationController
 
+    # Sample Query = "curl localhost:8081/api/searches | jq '.'"
     def index
         searches = Search.all
         render json: searches
