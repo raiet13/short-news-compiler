@@ -1,3 +1,4 @@
 class SiteSearchSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :site_id, :search_id
+
 end
