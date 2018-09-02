@@ -11,7 +11,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to Site Compiler</h1>
         </header>
         <p className="App-intro">
-          Next Step : Create Post Examples
+          Next Step : React/Redux Front End
         </p>
       </div>
     );
