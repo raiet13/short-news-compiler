@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   
   # NOTE : Only employing creation at this point (not update/delete)
-  resources :site_searches, only: [:create, :index]
+  resources :site_searches, only: [:create, :show, :index]
   resources :searches, only: [:create, :show, :index]
   resources :posts, only: [:create, :show, :index]
   resources :sites, only: [:create, :show, :index]
