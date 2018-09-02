@@ -4,7 +4,7 @@ React and Redux driven news site compiler. Application compiles news information
 
 # Note : This is a WIP Frame as the rails/react part is NOT WORKING at the moment
 
-api_name is for the NewsAPI
+site api_name is for the NewsAPI
 
 
 # Testing Commands
@@ -12,6 +12,8 @@ api_name is for the NewsAPI
 Test Database = rails c
 
 Test Views = rails s -b $IP -p $PORT
+
+Curl Tests from Terminal = curl localhost:8081/api/MODELNAME/?QUERY=# | jq '.'
 
 
 # Terminal Code Used
