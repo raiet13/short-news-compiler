@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
   
+  # Note : Putting routes into api scope to separate them from the React views
+  scope '/api' do
   
-  # NOTE : Only employing creation at this point (not update/delete)
-  resources :site_searches, only: [:create, :show, :index]
-  resources :searches, only: [:create, :show, :index]
-  resources :posts, only: [:create, :show, :index]
-  resources :sites, only: [:create, :show, :index]
-  
+    # NOTE : Only employing creation at this point (not update/delete)
+    resources :site_searches, only: [:create, :show, :index]
+    resources :searches, only: [:create, :show, :index]
+    resources :posts, only: [:create, :show, :index]
+    resources :sites, only: [:create, :show, :index]
+    
+  end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

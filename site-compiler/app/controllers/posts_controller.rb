@@ -1,8 +1,12 @@
 class PostsController < ApplicationController
     
+    # Get posts for specific site or all posts
     def index
-        posts = Post.all
-        render json: posts
+        if params[:site_id]
+            render json: Post.where(["site_id LIKE ?", "%#{params[:site_id]}%"])
+        else
+            render json: Post.all
+        end
     end
     
     def show
