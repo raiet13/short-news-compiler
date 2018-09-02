@@ -6,15 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
 # Note : Three Sites to use for now -- api_name is for the NewsAPI
 # nytimes = Site.create(name: 'The New York Times', api_name: '', url: 'https://www.nytimes.com/', api_url: 'https://api.nytimes.com/svc/topstories/v2/home.json')
-
 
 washpost = Site.create(name: 'The Washington Post', api_name: 'the-washington-post', url: 'https://www.washingtonpost.com/', api_url: 'https://newsapi.org/s/the-washington-post-api')
 fox = Site.create(name: 'Fox News', api_name: 'fox-news', url: 'http://www.foxnews.com/', api_url: 'https://newsapi.org/s/fox-news-api')
 politico = Site.create(name: 'Politico', api_name: 'politico', url: 'https://www.politico.com/', api_url: 'https://newsapi.org/s/politico-api')
 
-# Sample Posts
+
+# Sample NYTimes Posts
 # Post.create(site_id: nytimes.id, author: '', title: '', description: '', url: '', url_to_image: '')
 # Post.create(site_id: nytimes.id, author: '', title: '', description: '', url: '', url_to_image: '')
 # Post.create(site_id: nytimes.id, author: '', title: '', description: '', url: '', url_to_image: '')
@@ -36,3 +37,17 @@ Post.create(site_id: fox.id, author: 'Fox News', title: 'Media praise McCain, fa
 Post.create(site_id: politico.id, author: '', title: "President Barack Obama's eulogy for Senator John McCain", description: '', url: 'https://www.politico.com/video/2018/09/01/180901-mccain-newman-obama1-067249"', url_to_image: 'https://static.politico.com/da/f5/44342c424c68b675719324b1106b/politico.jpg')
 Post.create(site_id: politico.id, author: 'https://www.facebook.com/politico"', title: "Trump allies fume at McCain memorial addresses, urge counterattack", description: 'Some even hoped for — but didn’t get — a blistering tweet from the president.', url: 'https://www.politico.com/story/2018/09/01/trump-mccain-memorial-response-reaction-806113"', url_to_image: 'https://static.politico.com/f4/30/585f9c04498ea113d84bba7649cd/180901-protestors-ap-773.jpg"')
 Post.create(site_id: politico.id, author: 'Tim Alberta', title: "How 'Fake News' Was Born at the 1968 DNC", description: 'The madness of the 1968 Democratic National Convention pushed conservatives’ distrust of “the establishment” into overdrive.', url: 'https://www.politico.com/magazine/story/2018/09/02/how-fake-news-was-born-at-the-1968-dnc-219627"', url_to_image: 'https://static.politico.com/d4/8f/8e6f9e404d478067291f3293bd67/gettyimages-138455325.jpg')
+
+
+# Sample Searches
+tsearch = Search.create(search_term: 'trump')
+msearch = Search.create(search_term: 'mccain')
+
+
+# Sample SiteSearches
+SiteSearch.create(site_id: washpost.id, search_id: tsearch.id)
+SiteSearch.create(site_id: fox.id, search_id: tsearch.id)
+SiteSearch.create(site_id: politico.id, search_id: tsearch.id)
+
+SiteSearch.create(site_id: washpost.id, search_id: msearch.id)
+SiteSearch.create(site_id: fox.id, search_id: msearch.id)
