@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
     
     # Get posts for specific site or all posts
+    # Sample Queries = "curl localhost:8081/api/posts?site_id=1 | jq '.'" && "curl localhost:8081/api/posts | jq '.'"
     def index
         if params[:site_id]
             render json: Post.where(["site_id LIKE ?", "%#{params[:site_id]}%"])
@@ -9,6 +10,7 @@ class PostsController < ApplicationController
         end
     end
     
+    # Sample Query = "curl localhost:8081/api/posts/1 | jq '.'"
     def show
         post = Post.find(params[:id])
         render json: post
