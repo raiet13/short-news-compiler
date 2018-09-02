@@ -1,0 +1,2 @@
+class SiteSearchesController < ApplicationController
+end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180901010806) do
+ActiveRecord::Schema.define(version: 20180902201614) do
 
   create_table "posts", force: :cascade do |t|
     t.integer  "site_id"
@@ -23,6 +23,19 @@ ActiveRecord::Schema.define(version: 20180901010806) do
     t.datetime "published_at"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.string   "search_term"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "site_searches", force: :cascade do |t|
+    t.integer  "site_id"
+    t.integer  "search_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sites", force: :cascade do |t|

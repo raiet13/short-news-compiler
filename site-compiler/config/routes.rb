@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :site_searches
+  resources :searches
   resources :posts
   resources :sites
   # The priority is based upon order of creation: first created -> highest priority.
