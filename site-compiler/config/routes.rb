@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  resources :site_searches
-  resources :searches
-  resources :posts
-  resources :sites
+  
+  
+  # NOTE : Only employing creation at this point (not update/delete)
+  resources :site_searches, only: [:create, :index]
+  resources :searches, only: [:create, :show, :index]
+  resources :posts, only: [:create, :show, :index]
+  resources :sites, only: [:create, :show, :index]
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
