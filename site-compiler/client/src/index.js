@@ -31,6 +31,6 @@ ReactDOM.render(
     document.getElementById('root'));
 registerServiceWorker();
 
-            // <Route exact path="/showposts" render={ShowSitePosts} />
-            // <Route exact path="/searchlist" render={SearchList} />
-            // <Route exact path="/savedviews" render={SavedViews} />
+                // <Route exact path="/showposts" render={ShowSitePosts} />
+                // <Route exact path="/searchlist" render={SearchList} />
+                // <Route exact path="/savedviews" render={SavedViews} />
