@@ -11,20 +11,16 @@ import App from './routes/App';
 // import SavedViews from './routes/SavedViews';
 // import Credits from './routes/Credits';
 
-const Credits = () => {
-  return (
-    <div>
-      <h1>Credits!</h1>
-    </div>
-  );
-};
+const Main = <App />
 
 
 ReactDOM.render(
     (<Router>
         <React.Fragment>
             <NavBar />
-            <App />
+            <div>
+                <Route exact path="/" render={Main} />
+            </div>
         </React.Fragment>
     </Router>), 
     document.getElementById('root'));
