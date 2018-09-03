@@ -1,7 +1,7 @@
 // Note : This Route is the main page and should display the "main view" -- search/input Component + collapsible columns for the sites? + toggles for showing/hiding sites
 
 import React, { Component } from 'react';
-import logo from '../logo.svg';
+import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {

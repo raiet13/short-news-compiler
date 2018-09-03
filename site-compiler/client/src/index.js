@@ -10,7 +10,8 @@ import rootReducer from './reducers';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
-import App from './routes/App';
+import App from './App';
+import Main from './routes/Main';
 import Credits from './routes/Credits';
 // import ShowSitePosts from './routes/ShowSitePosts';
 // import SearchList from './routes/SearchList';
@@ -23,7 +24,7 @@ ReactDOM.render(
         <Router>
             <React.Fragment>
                 <NavBar />
-                <Route exact path="/" render={() => <App />} />
+                <Route exact path="/" render={() => <Main />} />
                 <Route exact path="/credits" render={() => <Credits />} />
             </React.Fragment>
         </Router>
