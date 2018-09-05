@@ -3,9 +3,9 @@
 import React from 'react';
 import '../../css/ShortPost.css';
 
-const ShortPost = ({ key, post }) => {
+const ShortPost = ({ post }) => {
     return (
-        <div class="shortPost clearfix" id={key}>
+        <div className="shortPost clearfix">
             <ul>
                 <img src={post.url_to_image} alt={post.url_to_image}></img>
                 <li><strong>Title :</strong> {post.title}</li>
