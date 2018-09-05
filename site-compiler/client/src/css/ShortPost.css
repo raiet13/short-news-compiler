@@ -7,14 +7,18 @@
 .shortPost {
     background-color: #dddddd;
     padding: 10px;
+    
+    /* WIP -- Note : Trying to get the img to be left aligned properly and see if needing the below given that this is a suboordinate element to another list container element*/
     margin: 0 30px 0 0;
+    /*height: 100px;*/
+    /*width: 300px;*/
 }
 
 /* https://www.w3schools.com/howto/howto_css_image_responsive.asp */
 .shortPost img {
     float: left;
     height: auto;
-    width: 50%;
+    width: 40%;
 }
 
 .shortPost ul {
@@ -23,4 +27,8 @@
 }
 
 .shortPost li {
+    list-style-type: none;
+    text-align: left;
+    margin: 5px;
+    font-size: 0.80em;
 }
