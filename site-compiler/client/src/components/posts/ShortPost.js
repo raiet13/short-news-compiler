@@ -5,9 +5,9 @@ import '../../css/ShortPost.css';
 
 const ShortPost = ({ key, post }) => {
     return (
-        <div class="shortPost" id={key}>
-            <img src={post.url_to_image} alt={post.url_to_image}></img>
+        <div class="shortPost clearfix" id={key}>
             <ul>
+                <img src={post.url_to_image} alt={post.url_to_image}></img>
                 <li>Title : {post.title}</li>
                 <li>Author : {post.author}</li>
                 <li>Published_at : {post.published_at}</li>
