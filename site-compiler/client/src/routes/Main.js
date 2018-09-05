@@ -14,10 +14,10 @@ class Main extends Component {
         };
     }
     
-    
     // Submit term for searching
     submitTerm(event) {
-      console.log('search : ', this.state.term);
+        event.preventDefault();
+        console.log('search : ', this.state.term);
         this.setState({
             term: ''
         });
@@ -35,10 +35,11 @@ class Main extends Component {
         return (
           <div>
             <h3>Main View</h3>
-            <form onSubmit={(event) => this.searchTerm(event)}>
+            <form onSubmit={(event) => this.submitTerm(event)}>
                 <TextInput name="search" value={this.state.term} onChange={(event) => this.handleSearchChange(event)}/>
                 <button>Search</button>
             </form>
+            
             <SiteColumnsContainer posts={this.props.posts}/>
           </div>
         );
