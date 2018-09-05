@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import './css/App.css';
 
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Landing from './routes/LandingPage';
@@ -43,4 +44,20 @@ class App extends Component {
 }
 
 
-export default App;
+const mapStateToProps = store => (
+  {
+    sites: store.sites,
+    posts: store.posts,
+    searches: store.searches,
+    siteSearches: store.siteSearches
+  }
+);
+
+function mapDispatchToProps(dispatch) {
+  return {
+  };
+}
+
+
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);
