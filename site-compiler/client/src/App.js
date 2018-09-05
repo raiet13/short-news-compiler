@@ -5,6 +5,7 @@ import './css/App.css';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
+import Landing from './routes/LandingPage';
 import Main from './routes/Main';
 import Credits from './routes/Credits';
 import ShowSitePosts from './routes/ShowSitePosts';
@@ -26,7 +27,8 @@ class App extends Component {
               </header>
               
               <div className="App-intro">
-                <Route exact path="/" render={() => <Main />} />
+                <Route exact path="/" render={() => <Landing />} />
+                <Route exact path="/main" render={() => <Main />} />
                 <Route exact path="/credits" render={() => <Credits />} />
                 <Route exact path="/showposts" render={() => <ShowSitePosts />} />
                 <Route exact path="/searchlist" render={() => <SearchList />} />

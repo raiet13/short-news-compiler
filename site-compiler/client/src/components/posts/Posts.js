@@ -1,28 +1,27 @@
 // Note : Presentational Component for showing all Post Objects (just so frame is being tracked)
 
 import React, { Component } from 'react';
-import ExpandedPost from './ExpandedPost';
+import ShortPost from './ShortPost';
 
-class Restaurants extends Component {
+class Posts extends Component {
 
   render() {
-    const { restaurants, deleteRestaurant } = this.props;
-    const restaurantList = restaurants.map(restaurant => {
+    const { posts } = this.props;
+    const postList = posts.map(post => {
       return (
-        <Restaurant
-            key={restaurant.id}
-            restaurant={restaurant}
-            deleteRestaurant={deleteRestaurant}
+        <ShortPost
+            key={post.id}
+            post={post}
         />
       )
     });
 
     return(
       <ul>
-        {restaurantList}
+        {postList}
       </ul>
     );
   }
 };
 
-export default Restaurants;
+export default Posts;
