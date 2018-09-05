@@ -11,7 +11,10 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
-const store = createStore( rootReducer, applyMiddleware(thunk) );
+// NOTE : Adding seed data to store for pre-API development purposes
+import seedData from './seedData';
+
+const store = createStore( rootReducer, seedData, applyMiddleware(thunk) );
 
 ReactDOM.render(
     <Provider store={store} >
