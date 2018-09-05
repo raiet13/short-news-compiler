@@ -12,6 +12,12 @@ class Main extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to a (News) Site Compiler</h1>
         </header>
+        <p>
+          Description : XXXXXXX
+        </p>
+        <p>
+          Getting Started / How to Use : XXXXXXX
+        </p>
         <p className="App-intro">
           Next Step : React/Redux Front End
         </p>
