@@ -34,9 +34,11 @@ const SiteSearches = [
     
     
 // NOTE : Returning default "store" data
-export const seedData = {
+const seedData = {
     sites: Sites,
     posts: Posts,
     searches: Searches,
     siteSearches: SiteSearches
 }
+
+export default seedData;
