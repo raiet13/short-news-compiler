@@ -15,7 +15,6 @@ import SavedViews from './routes/SavedViews';
 
 class App extends Component {
   
-  
   render() {
     return (
       <div className="App">
@@ -29,10 +28,18 @@ class App extends Component {
               
               <div className="App-intro">
                 <Route exact path="/" render={() => <Landing />} />
+                
+                
+                
+                { /* *** CURRENTLY IN PROGRESS *** */ }
                 <Route exact path="/main" render={() => <Main />} />
-                <Route exact path="/credits" render={() => <Credits />} />
+                
+                
+                { /* NOTE : This will need to be updated to be dynamic and removed from the navbar */ }
                 <Route exact path="/showposts" render={() => <ShowSitePosts />} />
+
                 <Route exact path="/searchlist" render={() => <SearchList />} />
+                <Route exact path="/credits" render={() => <Credits />} />
                 <Route exact path="/savedviews" render={() => <SavedViews />} />
               </div>
               
@@ -44,6 +51,10 @@ class App extends Component {
 }
 
 
+
+// export default App;
+// NOTE : Connected to store just for now to confirm seed data is in store properly
+
 const mapStateToProps = store => (
   {
     sites: store.sites,
@@ -52,12 +63,4 @@ const mapStateToProps = store => (
     siteSearches: store.siteSearches
   }
 );
-
-function mapDispatchToProps(dispatch) {
-  return {
-  };
-}
-
-
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
 export default connect(mapStateToProps)(App);
