@@ -1,10 +1,14 @@
-img {
+.shortPost {
+    background-color: #dddddd;
+}
+
+.shortPost img {
     float: left;
-    height: 300px;
+    height: auto;
     width: 50%;
 }
 
-div, ul {
-    float: left;
+.shortPost ul {
+    float: right;
     background-color: white;
 }
