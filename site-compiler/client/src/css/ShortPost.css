@@ -1,0 +1,10 @@
+img {
+    float: left;
+    height: 300px;
+    width: 50%;
+}
+
+div, ul {
+    float: left;
+    background-color: white;
+}

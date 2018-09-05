@@ -2,8 +2,8 @@
 
 import React, { Component } from 'react';
 // import RestaurantInput from '../components/restaurants/RestaurantInput'
-// import Restaurants from '../components/restaurants/Restaurants'
-// import { connect } from 'react-redux'
+import Posts from '../components/posts/Posts'
+import { connect } from 'react-redux'
 
 class Main extends Component {
 
@@ -17,12 +17,17 @@ class Main extends Component {
     return (
       <div>
         <h3>Main View</h3>
+        <Posts posts={this.props.posts}/>
       </div>
     );
   }
 }
 
-// const mapStateToProps = state => ({ restaurants: state.restaurants })
+
+
+const mapStateToProps = state => ({ posts: state.posts })
+
+export default connect(mapStateToProps)(Main)
 
 // const mapDispatchToProps = dispatch => ({
 //   addRestaurant: text => dispatch({type: 'ADD_RESTAURANT', text}),
@@ -30,5 +35,3 @@ class Main extends Component {
 // })
 
 // export default connect(mapStateToProps, mapDispatchToProps)(Main)
-
-export default Main;
