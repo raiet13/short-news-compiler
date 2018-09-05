@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import logo from '../logo.svg';
-import '../App.css';
+import '../css/App.css';
 
 class Main extends Component {
   render() {
@@ -21,10 +21,3 @@ class Main extends Component {
 }
 
 export default Main;
-
-      // <div>
-      //   <header>
-      //     <h1>Welcome to a (News) Site Compiler</h1>
-      //   </header>
-      //   <p>Next Step : React/Redux Front End</p>
-      // </div>
