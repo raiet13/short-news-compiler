@@ -10,7 +10,8 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            term: ""
+            term: '',
+            searchTerm: ''
         };
     }
     
@@ -18,8 +19,10 @@ class Main extends Component {
     submitTerm(event) {
         event.preventDefault();
         console.log('search : ', this.state.term);
+        const savedTerm = this.state.term;
         this.setState({
-            term: ''
+            term: '',
+            searchTerm: savedTerm
         });
     }
     
@@ -40,7 +43,7 @@ class Main extends Component {
                 <button>Search</button>
             </form>
             
-            <SiteColumnsContainer posts={this.props.posts}/>
+            <SiteColumnsContainer sites={this.props.sites} search={this.state.searchTerm} />
           </div>
         );
     }
@@ -48,6 +51,6 @@ class Main extends Component {
 
 
 
-const mapStateToProps = state => ({ posts: state.posts })
+const mapStateToProps = store => ({ sites: store.sites })
 
 export default connect(mapStateToProps)(Main)

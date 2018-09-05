@@ -1,6 +1,8 @@
 // Note : Container for the SiteColumns (just so frame is being tracked)
 
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
 import Posts from '../components/posts/Posts'
 
 class SiteColumnsContainer extends Component {
@@ -14,5 +16,6 @@ class SiteColumnsContainer extends Component {
   }
 }
 
+const mapStateToProps = store => ({ posts: store.posts })
 
-export default SiteColumnsContainer;
+export default connect(mapStateToProps)(SiteColumnsContainer);
