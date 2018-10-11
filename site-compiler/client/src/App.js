@@ -7,11 +7,11 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Landing from './routes/LandingPage';
-import Main from './routes/Main';
-import Credits from './routes/Credits';
 import ShowSitePosts from './routes/ShowSitePosts';
 import SearchList from './routes/SearchList';
-import SavedViews from './routes/SavedViews';
+import Credits from './routes/Credits';
+// import Main from './routes/Main';
+// import SavedViews from './routes/SavedViews';
 
 class App extends Component {
   
@@ -27,20 +27,19 @@ class App extends Component {
               </header>
               
               <div className="App-intro">
-                <Route exact path="/" render={() => <Landing />} />
-                
-                
-                
-                { /* *** CURRENTLY IN PROGRESS *** */ }
-                <Route exact path="/main" render={() => <Main />} />
-                
-                
-                { /* NOTE : This will need to be updated to be dynamic and removed from the navbar */ }
-                <Route exact path="/showposts" render={() => <ShowSitePosts />} />
 
+                { /* *** CURRENTLY IN PROGRESS *** */ }
+                <Route exact path="/" render={() => <Landing />} />
+                <Route exact path="/showposts" render={() => <ShowSitePosts />} />
                 <Route exact path="/searchlist" render={() => <SearchList />} />
                 <Route exact path="/credits" render={() => <Credits />} />
+                
+                
+                { /* NOTE : This will need to be updated to be dynamic and removed from the navbar 
+
+                <Route exact path="/main" render={() => <Main />} />
                 <Route exact path="/savedviews" render={() => <SavedViews />} />
+                */ }
               </div>
               
             </React.Fragment>
