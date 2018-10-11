@@ -22,7 +22,7 @@ class App extends Component {
             <React.Fragment>
             
               <header>
-                <h1 className="App-title">(News) Site Compiler</h1>
+                <h1 className="App-title">(News) Site Compiler ver. 5</h1>
                 <NavBar />
               </header>
               
