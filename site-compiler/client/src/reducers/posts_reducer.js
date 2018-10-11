@@ -1,5 +1,8 @@
 
 // Note : Reducer for getting/setting posts -- WIP
+// Need to...
+    // Create new Posts
+    // Retrieve Posts by Site (id)
 
 export default function postsReducer(state = 
     { loading: false, data: [] }, action) {
