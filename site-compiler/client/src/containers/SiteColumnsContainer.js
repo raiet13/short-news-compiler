@@ -10,31 +10,30 @@ class SiteColumnsContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sitePosts: {}
+            createdSiteIds: []
         };
     }
 
   // Function to map the posts to unique arrays based on site_id (to be fed into unique "Posts" components)
   mapPostsBySite = () => {
     console.log(this.props);
-    let postSiteID = 0;
-    let previousPostSiteID = 0;
-    let newSitePosts = [];
-
-    this.props.posts.map(post => {
-      console.log(postSiteID, previousPostSiteID);
-      postSiteID = post.site_id;
-      if (postSiteID === previousPostSiteID) {
-        newSitePosts << post;
-      } else {
-        // Add new site Posts
-        // this.setState({
-        //     sitePosts: { ...this.state.sitePosts, newSitePosts }
-        // });
-        newSitePosts = [];
+    const allPosts = this.props.posts;
+    console.log(this.state);
+    
+    allPosts.forEach(post => {
+      let currentState = this.state.createdSiteIds;
+      console.log('current created site ids : ', currentState);
+      if (currentState.includes(post.site_id) === false) {
+        let currentSiteId = post.site_id;
+        this.setState({
+          createdSiteIds: { ...this.state.createdSiteIds, currentSiteId }
+        });
       }
-    })
-  }
+    });
+    
+    console.log(this.state);
+  };
+
 
   render() {
     return (
