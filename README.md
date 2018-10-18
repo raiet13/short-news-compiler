@@ -15,6 +15,8 @@ Test Views = rails s -b $IP -p $PORT
 
 Curl Tests from Terminal = curl localhost:8081/api/MODELNAME/?QUERY=# | jq '.'
 
+Run program = rake start
+
 
 # Terminal Code Used
 
