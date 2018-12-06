@@ -1,4 +1,5 @@
-// Note : Presentational Component for showing all Site Objects (just so frame is being tracked)
+// Note : Presentational Component for showing all Site Objects
+
 import React, { Component } from 'react';
 
 class Sites extends Component {
