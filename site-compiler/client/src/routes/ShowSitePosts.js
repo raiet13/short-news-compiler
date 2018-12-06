@@ -2,9 +2,9 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import SearchInput from '../components/searches/SearchInput';
 import Posts from '../components/posts/Posts';
 import ExpandedPost from '../components/posts/ExpandedPost';
+import '../css/ShowSitePosts.css';
 
 class ShowSitePosts extends Component {
 
@@ -42,24 +42,18 @@ class ShowSitePosts extends Component {
     return (
       <div>
           <h3>ShowSitePosts -- WIP</h3>
-          <SearchInput />
-          
+
           <div class="row">
             <div class="column">
-              <p>The Washington Post</p>
+              <h3>The Washington Post</h3>
               <Posts posts={this.filterPosts(1)}/>
             </div>
             
             <div class="column">
-              <p>Fox News</p>
-              <Posts posts={this.filterPosts(2)}/>
-            </div>
-            
-            <div class="column">
-              <p>Show Expanded Post</p>
+              <h3>Show Expanded Post</h3>
               <div>{this.showExpandedPost(this.state.selectedPostId)}</div>
             </div>
-            
+
           </div>
       </div>
     );
