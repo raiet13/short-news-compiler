@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
-import Landing from './routes/LandingPage';
+import Home from './routes/Home';
 import ShowSitePosts from './routes/ShowSitePosts';
 import SearchList from './routes/SearchList';
 import Credits from './routes/Credits';
@@ -20,12 +20,11 @@ class App extends Component {
             <React.Fragment>
             
               <header>
-                <h1 className="App-title">(News) Site Compiler ver. 6</h1>
                 <NavBar />
               </header>
               
               <div className="App-intro">
-                <Route exact path="/" render={() => <Landing />} />
+                <Route exact path="/" render={() => <Home />} />
                 <Route exact path="/showposts" render={() => <ShowSitePosts />} />
                 <Route exact path="/searchlist" render={() => <SearchList />} />
                 <Route exact path="/credits" render={() => <Credits />} />

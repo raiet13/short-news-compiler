@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import SearchInput from '../components/searches/SearchInput';
 import Posts from '../components/posts/Posts';
 import ExpandedPost from '../components/posts/ExpandedPost';
 
@@ -18,7 +19,7 @@ class ShowSitePosts extends Component {
     return (this.props.posts.filter(post => post.site_id === site_id));
   };
   
-  // Function to display selected post
+  // Function to display selected post -- ***WIP***
   selectPost = () => {
     // Get selected post on mouse click
     // Update local state "selectedPostId" with selected post id
@@ -41,6 +42,7 @@ class ShowSitePosts extends Component {
     return (
       <div>
           <h3>ShowSitePosts -- WIP</h3>
+          <SearchInput />
           
           <div class="row">
             <div class="column">
@@ -64,8 +66,7 @@ class ShowSitePosts extends Component {
   }
 }
 
-// export default ShowSitePosts;
-
+// Get posts from store
 const mapStateToProps = (state) => {
   return { posts: state.posts };
 };
