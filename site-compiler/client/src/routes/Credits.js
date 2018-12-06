@@ -18,8 +18,6 @@ class Credits extends Component {
   }
 };
 
-// export default Credits;
-
 const mapStateToProps = (state) => {
   return { sites: state.sites };
 };
