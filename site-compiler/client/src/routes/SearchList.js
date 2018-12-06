@@ -31,6 +31,7 @@ class SearchList extends Component {
           <h3>All Completed Searches</h3>
           <div>SHOW_SEARCHES_COMPONENT</div>
           <div>{this.mapSearches()}</div>
+        <Searches searches={this.props.searches}/>
       </div>
     );
   }

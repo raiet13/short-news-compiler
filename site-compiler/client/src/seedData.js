@@ -24,6 +24,7 @@ const Searches = [
     ];
 
 
+
 const SiteSearches = [
     { id: 1, site_id: 1, search_id: 1 },
     { id: 2, site_id: 2, search_id: 1 },

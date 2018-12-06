@@ -1,6 +1,6 @@
 // Note : Reducer for searches -- WIP
 // Need to...
-    // Create new Searches
+    // Create new Searches and save to database
     // Retrieve Searches
     // Retrieve a specific Search's keyword + date completed
 
