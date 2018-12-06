@@ -6,21 +6,36 @@ import Posts from '../components/posts/Posts';
 import ExpandedPost from '../components/posts/ExpandedPost';
 
 class ShowSitePosts extends Component {
-  // Display Dropdown with site names
-  // Select specific site then shows...
-    // Site Name + URL
-    // Site Post Container of the "three expanded posts" (three column structure with scrolling) 
-  
-  
+
+    // Set up component's local state and functions
+    constructor(props) {
+        super(props);
+        this.state = {selectedPostId: 0};
+    }
+
   // Function to filter posts by site id
   filterPosts = (site_id) => {
-    // const posts = this.props.posts;
-    // console.log('site id : ', site_id)
-    // console.log('props.post : ', this.props.posts)
-    // console.log('posts :', posts)
-    // console.log(posts.filter(post => post.site_id === site_id))
     return (this.props.posts.filter(post => post.site_id === site_id));
   };
+  
+  // Function to display selected post
+  selectPost = () => {
+    // Get selected post on mouse click
+    // Update local state "selectedPostId" with selected post id
+    // Call "showExpandedPost" function
+  };
+  
+  // Function to display Expanded Post in section (if applicable)
+  showExpandedPost = (post_id) => {
+    // If post_id then show expanded post
+    if (post_id > 0) {
+      const selectedPost = this.props.posts.filter(post => post.id === post_id);
+      return (<ExpandedPost post={selectedPost}/>);
+    } else {
+      // Else, no post_id (initial load) show text
+      return (<p>No Post Selected</p>);
+    }
+  }
 
   render() {
     return (
@@ -36,6 +51,11 @@ class ShowSitePosts extends Component {
             <div class="column">
               <p>Fox News</p>
               <Posts posts={this.filterPosts(2)}/>
+            </div>
+            
+            <div class="column">
+              <p>Show Expanded Post</p>
+              <div>{this.showExpandedPost(this.state.selectedPostId)}</div>
             </div>
             
           </div>
