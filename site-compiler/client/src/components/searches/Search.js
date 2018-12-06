@@ -8,8 +8,7 @@ const Search = ({ search }) => {
         <div className="search clearfix">
             <ul>
                 <li><strong>Keyword :</strong> {search.keyword}</li>
-                <li><strong>Sites Searched :</strong> {search.sites}</li>
-                <li><strong>Searched At :</strong> {search.created_at}</li>
+                <li><strong>Searched :</strong> {search.created_at}</li>
             </ul>
         </div>
     );

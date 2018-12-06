@@ -24,22 +24,11 @@ const Searches = [
     ];
 
 
-
-const SiteSearches = [
-    { id: 1, site_id: 1, search_id: 1 },
-    { id: 2, site_id: 2, search_id: 1 },
-    { id: 3, site_id: 3, search_id: 1 },
-    { id: 4, site_id: 1, search_id: 2 },
-    { id: 5, site_id: 2, search_id: 2 },
-    ];
-    
-    
 // NOTE : Returning default "store" data
 const seedData = {
     sites: Sites,
     posts: Posts,
-    searches: Searches,
-    siteSearches: SiteSearches
+    searches: Searches
 }
 
 export default seedData;

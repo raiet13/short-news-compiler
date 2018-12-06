@@ -13,9 +13,14 @@ class Sites extends Component {
     });
 
     return(
-      <ul>
-        {siteList}
-      </ul>
+      <div>
+        <ul>
+          {siteList}
+        </ul>
+        <div>
+          <p>Show Expanded Site Info Here(?) if Clicked On (change from url href to ~buttons)</p>
+        </div>
+      </div>
     );
   }
 };

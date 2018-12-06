@@ -10,15 +10,9 @@ const NavBar = () => {
                 <li><Link to="/showposts">ShowSitePosts</Link></li>
                 <li><Link to="/searchlist">SearchList</Link></li>
                 <li><Link to="/credits">Credits</Link></li>
-                
-                {/* NOTE : GBT later
-                <li><Link to="/main">Main</Link></li>
-                <li><Link to="/savedviews">SavedViews</Link></li>
-                */}
-                
             </ul>
         </div>
     )
-}
+};
 
-export default NavBar
+export default NavBar;
