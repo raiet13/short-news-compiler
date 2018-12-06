@@ -1,5 +1,4 @@
 // Note : Stateless Component for showing Search Object
-// Note : Figuring out how to handle "search sites" still
 
 import React from 'react';
 
