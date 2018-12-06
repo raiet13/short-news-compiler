@@ -1,5 +1,7 @@
 # short-news-compiler
-React and Redux driven news site compiler. Application compiles news information so that one search term can be used to check the top results across multiple sites (rather than having to visit each site's website directly)
+React and Redux driven news site compiler. Application compiles news information so that one search term can be used to check the top results across multiple sites (rather than having to visit each site's website directly).
+
+Currently only supports use of 2 sites. It is in it's simplest form with intentions of further development in the future.
 
 
 # Note : This is a WIP Frame as the rails/react part is NOT WORKING at the moment
