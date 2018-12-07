@@ -1,11 +1,6 @@
 // Note : Presentational Component for showing all Search Objects
 
 
-// NOTE : Next step = transforming list into a table
-/* 
-    https://stackoverflow.com/questions/39462458/react-js-creating-simple-table
-*/
-
 import React, { Component } from 'react';
 import Search from './Search';
 

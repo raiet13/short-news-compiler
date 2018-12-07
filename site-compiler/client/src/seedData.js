@@ -19,8 +19,8 @@ const Posts = [
     ];
 
 const Searches = [
-    { id: 1, search_term: 'trump' },
-    { id: 2, search_term: 'mccain' }
+    { id: 1, search_term: 'trump', created_at:'12.6.18'},
+    { id: 2, search_term: 'mccain', created_at:'12.6.18' }
     ];
 
 
