@@ -13,18 +13,10 @@ class SearchList extends Component {
         };
     }
 
-  // Map searches from store
-  mapSearches = (props) => {
-    console.log(this.props);
-    const allSearches = this.props.searches;
-    console.log(this.props.searches);
-  }
-  
   render() {
     return (
       <div>
-          <h3>All Completed Searches</h3>
-          <div>{this.mapSearches()}</div>
+        <h3>All Completed Searches</h3>
         <Searches searches={this.props.searches}/>
       </div>
     );
