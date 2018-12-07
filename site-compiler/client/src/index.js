@@ -14,6 +14,7 @@ import rootReducer from './reducers';
 // NOTE : Adding seed data to store for pre-API development purposes -- https://redux.js.org/recipes/structuringreducers/initializingstate
 import seedData from './seedData';
 
+// Require dotenv to access the API Keys
 require('dotenv').config()
 
 const store = createStore( rootReducer, seedData, applyMiddleware(thunk) );

@@ -1,6 +1,9 @@
 // Note : Component for creating new Searches (just so frame is being tracked)
 import React from 'react';
 
+import { connect } from 'react-redux'
+import { fetchPosts } from '../../actions/posts'
+
 class SearchInput extends React.Component {
     
     // Set up component's local state and functions
@@ -21,9 +24,10 @@ class SearchInput extends React.Component {
     
     // Submit the search and call the fetch requests
     handleSubmit(event) {
-        alert('Search for: ' + this.state.keyword);
+        // alert('Search for: ' + this.state.keyword);
         event.preventDefault();
         // Get fetch requests
+        fetchPosts('the-washington-post', this.state.keyword);
     }
     
     // Display Input/Form
@@ -39,4 +43,16 @@ class SearchInput extends React.Component {
     }
 }
 
-export default SearchInput;
+// export default SearchInput;
+
+const mapStateToProps = state => {
+  return {newPosts: state.posts}
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchPosts: () => dispatch(fetchPosts())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchInput)
