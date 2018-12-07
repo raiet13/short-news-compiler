@@ -4,7 +4,7 @@
     // Retrieve Searches from database
 
 export default function searchesReducer(state = [], action) {
-    console.log('action : ', action)
+    console.log('searches reducer action : ', action)
     
     switch (action.type) {
     

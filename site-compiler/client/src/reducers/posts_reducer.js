@@ -2,15 +2,15 @@
 // Note : Reducer for fetching posts from external API
 
 export default function postsReducer(state = 
-    { loading: false, data: [] }, action) {
-    console.log('action : ', action)
+    { loading: false, data: [], headlines: [] }, action) {
+    console.log('posts reducer action : ', action)
     
     switch (action.type) {
     
         case 'REMOVE_POSTS':
             return {
                 loading: false,
-                data: []
+                headlines: []
             }
     
         case 'LOADING_POSTS':
@@ -22,7 +22,7 @@ export default function postsReducer(state =
             console.log('Fetch Posts')
             return {
                 loading: false,
-                data: action.payload
+                headlines: action.payload
             }
         
         default:
