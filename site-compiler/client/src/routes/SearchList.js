@@ -6,13 +6,6 @@ import Searches from '../components/searches/Searches';
 
 class SearchList extends Component {
   
-    constructor(props) {
-        super(props);
-        this.state = {
-            searches: []
-        };
-    }
-
   render() {
     return (
       <div>
@@ -25,5 +18,4 @@ class SearchList extends Component {
 
 const mapStateToProps = store => ({ searches: store.searches })
 
-// export default SearchList;
 export default connect(mapStateToProps)(SearchList);
