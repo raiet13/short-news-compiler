@@ -19,13 +19,13 @@ class ShowSitesSearch extends Component {
           <h3>ShowSitesSearch -- WIP</h3>
           <SearchInput />
           
-          <div class="row">
-            <div class="column">
+          <div className="row">
+            <div className="column">
               <h3>The Washington Post</h3>
               <Posts posts={this.filterPosts(1)}/>
             </div>
             
-            <div class="column">
+            <div className="column">
               <h3>Fox News</h3>
               <Posts posts={this.filterPosts(2)}/>
             </div>
