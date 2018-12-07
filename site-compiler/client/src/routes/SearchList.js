@@ -13,23 +13,17 @@ class SearchList extends Component {
         };
     }
 
-  // Fetch Searches from Database
-  // Display Searches
-  
   // Map searches from store
   mapSearches = (props) => {
     console.log(this.props);
     const allSearches = this.props.searches;
     console.log(this.props.searches);
-    console.log(this.props.siteSearches);
   }
   
   render() {
     return (
       <div>
-          <h3>SearchList -- WIP</h3>
           <h3>All Completed Searches</h3>
-          <div>SHOW_SEARCHES_COMPONENT</div>
           <div>{this.mapSearches()}</div>
         <Searches searches={this.props.searches}/>
       </div>
@@ -37,7 +31,7 @@ class SearchList extends Component {
   }
 }
 
-const mapStateToProps = store => ({ searches: store.searches, siteSearches: store.siteSearches })
+const mapStateToProps = store => ({ searches: store.searches })
 
 // export default SearchList;
 export default connect(mapStateToProps)(SearchList);
