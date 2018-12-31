@@ -12,7 +12,9 @@ export const addSearch = search => {
 export function fetchSearches() {
   return(dispatch) => {
     dispatch({type: 'LOADING_SEARCHES'});
-    return fetch('')
+    return fetch(`api/searches`, {
+      accept: "application/json"
+    })
     .then(
       console.log('fetched search data')
       );
