@@ -18,6 +18,15 @@ class App extends Component {
   // Fetch Top Headlines from Washington Post
   componentDidMount() {
     console.log('ComponentDidMount App');
+    return fetch('https://pokeapi.co/api/v2/pokemon/ditto/')
+    .then(
+      console.log('fetched data'),
+      response => response.json())
+    .then(data => {
+      console.log('fetch data = ', data)
+    });
+    
+    
     // return fetch(`https://newsapi.org/v2/top-headlines?sources=the-washington-post`,{
     //     crossDomain:true,
     //     method: 'GET',
