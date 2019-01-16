@@ -17,11 +17,12 @@ import seedData from './seedData';
 // Require dotenv to access the API Keys
 require('dotenv').config()
 
-const store = createStore( rootReducer, seedData, applyMiddleware(thunk) );
+// const store = createStore( rootReducer, seedData, applyMiddleware(thunk) );
+const store = createStore( rootReducer, applyMiddleware(thunk) );
 
 ReactDOM.render(
     <Provider store={store} >
         <App />
-    </Provider>, 
+    </Provider>,
     document.getElementById('root'));
 registerServiceWorker();
