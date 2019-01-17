@@ -11,12 +11,12 @@ export const removePosts = () => {
 }
 
 export function fetchPosts(siteAPI, query) {
-  // return(dispatch) => {
+  return(dispatch) => {
 
     console.log(`Search : ${siteAPI} for '${query}'`);
     let fetchURL = `https://newsapi.org/v2/top-headlines?sources=${siteAPI}`;
     if (query) { fetchURL += `&q=${query}` };
-    // dispatch({type: 'LOADING_POSTS'});
+    dispatch({type: 'LOADING_POSTS'});
 
     fetch(fetchURL, {
           crossDomain:true,
@@ -26,7 +26,7 @@ export function fetchPosts(siteAPI, query) {
         .then(data => {
           console.log(data);
           // ***UPDATE "articles" to include site_id info
-          // dispatch({ type: 'FETCH_POSTS', articles: data.articles })
+          dispatch({ type: 'FETCH_POSTS', articles: data.articles })
       });
-    // };
+    };
 };

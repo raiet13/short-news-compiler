@@ -15,6 +15,8 @@ import Credits from './routes/Credits';
 
 class App extends Component {
 
+  // <Route exact path="/showposts" render={() => <ShowSitePosts />} />
+
   render() {
     return (
       <div className="App">
@@ -28,7 +30,6 @@ class App extends Component {
               <div className="App-intro">
                 <Route exact path="/" render={() => <Home />} />
                 <Route exact path="/showsitessearch" render={() => <ShowSitesSearch />} />
-                <Route exact path="/showposts" render={() => <ShowSitePosts />} />
                 <Route exact path="/searchlist" render={() => <SearchList />} />
                 <Route exact path="/credits" render={() => <Credits />} />
               </div>
