@@ -30,3 +30,18 @@ export function fetchPosts(siteAPI, query) {
       });
     };
 };
+
+// Note : Just a test function to ensure that it is working aside from the dispatch...
+export function fetchPostsNoDispatch(siteAPI, query) {
+    console.log(`Search : ${siteAPI} for '${query}'`);
+    let fetchURL = `https://newsapi.org/v2/top-headlines?sources=${siteAPI}`;
+    if (query) { fetchURL += `&q=${query}` };
+    fetch(fetchURL, {
+          crossDomain:true,
+          method: 'GET',
+          headers: {'Authorization':newsApiKey}
+        }).then(response => response.json())
+        .then(data => {
+          console.log(data);
+      });
+};
