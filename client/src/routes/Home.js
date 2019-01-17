@@ -11,18 +11,16 @@ class Home extends Component {
       <div className="App Home">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to a (News) Site Compiler</h1>
+          <h1 className="App-title">(News) Site Compiler</h1>
         </header>
-        <h4>(News) Site Compiler ver. 6</h4>
+        <h4>Welcome to a (News) Site Compiler by Raiet Intraub</h4>
         <p className="App-intro">
-          Description : XXXXXXX
+          <strong>Description :</strong> A one-stop-show compiler app that brings together several news sources using their APIs.
         </p>
-        <p>
-          Getting Started / How to Use : XXXXXXX
-        </p>
+        <p><strong>Getting Started / How to Use :</strong> Click on any of the tabs in the navbar to get started. Each page will include a description and instructions.</p>
       </div>
     );
-  }
-}
+  };
+};
 
 export default Home;
