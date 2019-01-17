@@ -1,0 +1,512 @@
+  [1m[36m (16.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (10.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateSites (20180901004927)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "sites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "api_name" varchar, "url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180901004927"]]
+  [1m[35m (13.0ms)[0m  commit transaction
+Migrating to CreatePosts (20180901004944)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_id" integer, "author" varchar, "title" varchar, "description" varchar, "url" varchar, "url_to_image" varchar, "published_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180901004944"]]
+  [1m[35m (11.1ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSite Exists (0.3ms)[0m  SELECT  1 AS one FROM "sites" WHERE "sites"."name" = 'fox' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "sites" ("name", "api_name", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "fox"], ["api_name", "fox-news"], ["url", "fox.com"], ["created_at", "2018-09-01 00:58:35.397568"], ["updated_at", "2018-09-01 00:58:35.397568"]]
+  [1m[35m (20.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "posts" ("site_id", "url", "author", "title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["site_id", 1], ["url", "post.com"], ["author", "a1"], ["title", "test post"], ["description", "test description"], ["created_at", "2018-09-01 00:59:38.570340"], ["updated_at", "2018-09-01 00:59:38.570340"]]
+  [1m[36m (11.4ms)[0m  [1mcommit transaction[0m
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "sites"[0m
+  [1m[35mSite Load (0.2ms)[0m  SELECT  "sites".* FROM "sites"  ORDER BY "sites"."id" ASC LIMIT 1
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddApiUrlToSite (20180901010806)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "sites" ADD "api_url" varchar[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20180901010806"]]
+  [1m[36m (11.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (12.8ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_id" integer, "author" varchar, "title" varchar, "description" varchar, "url" varchar, "url_to_image" varchar, "published_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (18.8ms)[0m  CREATE TABLE "sites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "api_name" varchar, "url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "api_url" varchar) 
+  [1m[36m (14.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (14.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (14.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180901010806')[0m
+  [1m[35m (15.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180901004927')
+  [1m[36m (11.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180901004944')[0m
+  [1m[35m (12.9ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_id" integer, "author" varchar, "title" varchar, "description" varchar, "url" varchar, "url_to_image" varchar, "published_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (10.9ms)[0m  [1mCREATE TABLE "sites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "api_name" varchar, "url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "api_url" varchar) [0m
+  [1m[35m (11.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (10.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (9.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180901010806')
+  [1m[36m (9.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180901004927')[0m
+  [1m[35m (9.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180901004944')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSite Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "sites" WHERE "sites"."name" = '' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSite Exists (0.2ms)[0m  SELECT  1 AS one FROM "sites" WHERE "sites"."name" = '' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSite Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "sites" WHERE "sites"."name" = 'Fox News' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "sites" ("name", "api_name", "url", "api_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Fox News"], ["api_name", "fox-news"], ["url", "http://www.foxnews.com/"], ["api_url", "https://newsapi.org/s/fox-news-api"], ["created_at", "2018-09-01 01:08:54.386703"], ["updated_at", "2018-09-01 01:08:54.386703"]]
+  [1m[36m (9.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "sites"[0m
+  [1m[35mSite Load (0.2ms)[0m  SELECT  "sites".* FROM "sites"  ORDER BY "sites"."id" ASC LIMIT 1
+  [1m[36m (14.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (14.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateSites (20180901004927)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "sites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "api_name" varchar, "url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180901004927"]]
+  [1m[35m (15.3ms)[0m  commit transaction
+Migrating to CreatePosts (20180901004944)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_id" integer, "author" varchar, "title" varchar, "description" varchar, "url" varchar, "url_to_image" varchar, "published_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180901004944"]]
+  [1m[35m (12.2ms)[0m  commit transaction
+Migrating to AddApiUrlToSite (20180901010806)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "sites" ADD "api_url" varchar
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180901010806"]]
+  [1m[35m (14.9ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateSearches (20180902201501)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "searches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "search_term" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20180902201501"]]
+  [1m[36m (15.2ms)[0m  [1mcommit transaction[0m
+Migrating to CreateSiteSearches (20180902201614)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "site_searches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_id" integer, "search_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20180902201614"]]
+  [1m[36m (11.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (10.7ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_id" integer, "author" varchar, "title" varchar, "description" varchar, "url" varchar, "url_to_image" varchar, "published_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (10.2ms)[0m  CREATE TABLE "searches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "search_term" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (11.4ms)[0m  [1mCREATE TABLE "site_searches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_id" integer, "search_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (9.9ms)[0m  CREATE TABLE "sites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "api_name" varchar, "url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "api_url" varchar) 
+  [1m[36m (13.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (9.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (7.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180902201614')[0m
+  [1m[35m (7.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180901004927')
+  [1m[36m (7.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180901004944')[0m
+  [1m[35m (8.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180901010806')
+  [1m[36m (8.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180902201501')[0m
+  [1m[35m (13.7ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_id" integer, "author" varchar, "title" varchar, "description" varchar, "url" varchar, "url_to_image" varchar, "published_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (10.6ms)[0m  [1mCREATE TABLE "searches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "search_term" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (11.3ms)[0m  CREATE TABLE "site_searches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_id" integer, "search_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (11.4ms)[0m  [1mCREATE TABLE "sites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "api_name" varchar, "url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "api_url" varchar) [0m
+  [1m[35m (10.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (10.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (10.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180902201614')
+  [1m[36m (8.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180901004927')[0m
+  [1m[35m (10.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180901004944')
+  [1m[36m (11.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180901010806')[0m
+  [1m[35m (10.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180902201501')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSite Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "sites" WHERE "sites"."name" = 'The Washington Post' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sites" ("name", "api_name", "url", "api_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "The Washington Post"], ["api_name", "the-washington-post"], ["url", "https://www.washingtonpost.com/"], ["api_url", "https://newsapi.org/s/the-washington-post-api"], ["created_at", "2018-09-02 20:21:34.133668"], ["updated_at", "2018-09-02 20:21:34.133668"]]
+  [1m[36m (11.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSite Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "sites" WHERE "sites"."name" = 'Fox News' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "sites" ("name", "api_name", "url", "api_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Fox News"], ["api_name", "fox-news"], ["url", "http://www.foxnews.com/"], ["api_url", "https://newsapi.org/s/fox-news-api"], ["created_at", "2018-09-02 20:21:34.149383"], ["updated_at", "2018-09-02 20:21:34.149383"]]
+  [1m[36m (11.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSite Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "sites" WHERE "sites"."name" = 'Politico' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "sites" ("name", "api_name", "url", "api_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Politico"], ["api_name", "politico"], ["url", "https://www.politico.com/"], ["api_url", "https://newsapi.org/s/politico-api"], ["created_at", "2018-09-02 20:21:34.164738"], ["updated_at", "2018-09-02 20:21:34.164738"]]
+  [1m[36m (9.9ms)[0m  [1mcommit transaction[0m
+  [1m[36m (13.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (11.4ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateSites (20180901004927)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "sites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "api_name" varchar, "url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180901004927"]]
+  [1m[35m (11.0ms)[0m  commit transaction
+Migrating to CreatePosts (20180901004944)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_id" integer, "author" varchar, "title" varchar, "description" varchar, "url" varchar, "url_to_image" varchar, "published_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180901004944"]]
+  [1m[35m (9.0ms)[0m  commit transaction
+Migrating to AddApiUrlToSite (20180901010806)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "sites" ADD "api_url" varchar
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180901010806"]]
+  [1m[35m (8.6ms)[0m  commit transaction
+Migrating to CreateSearches (20180902201501)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "searches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "search_term" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180902201501"]]
+  [1m[35m (11.7ms)[0m  commit transaction
+Migrating to CreateSiteSearches (20180902201614)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "site_searches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_id" integer, "search_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180902201614"]]
+  [1m[35m (9.2ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSite Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "sites" WHERE "sites"."name" = 'The Washington Post' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "sites" ("name", "api_name", "url", "api_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "The Washington Post"], ["api_name", "the-washington-post"], ["url", "https://www.washingtonpost.com/"], ["api_url", "https://newsapi.org/s/the-washington-post-api"], ["created_at", "2018-09-02 20:22:48.688558"], ["updated_at", "2018-09-02 20:22:48.688558"]]
+  [1m[36m (12.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSite Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "sites" WHERE "sites"."name" = 'Fox News' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "sites" ("name", "api_name", "url", "api_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Fox News"], ["api_name", "fox-news"], ["url", "http://www.foxnews.com/"], ["api_url", "https://newsapi.org/s/fox-news-api"], ["created_at", "2018-09-02 20:22:48.704768"], ["updated_at", "2018-09-02 20:22:48.704768"]]
+  [1m[36m (9.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSite Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "sites" WHERE "sites"."name" = 'Politico' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "sites" ("name", "api_name", "url", "api_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Politico"], ["api_name", "politico"], ["url", "https://www.politico.com/"], ["api_url", "https://newsapi.org/s/politico-api"], ["created_at", "2018-09-02 20:22:48.717196"], ["updated_at", "2018-09-02 20:22:48.717196"]]
+  [1m[36m (10.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("site_id", "author", "title", "description", "url", "url_to_image", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["site_id", 1], ["author", ""], ["title", "Opinion | The McCain funeral offered a promise of deliverance at a dark moment in American history"], ["description", "McCain's funeral was a rejection of the ugliness of the Trump years."], ["url", "https://www.washingtonpost.com/news/global-opinions/wp/2018/09/02/the-mccain-funeral-offered-a-promise-of-deliverance-at-a-dark-moment-in-american-history/"], ["url_to_image", "https://www.washingtonpost.com/resizer/u812l52sy63fm2L-H6E0BdqUplA=/1484x0/arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/Y2DZXIHRRE63BGR7HFQWKEKL5E.jpg"], ["created_at", "2018-09-02 20:22:48.741893"], ["updated_at", "2018-09-02 20:22:48.741893"]]
+  [1m[35m (21.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posts" ("site_id", "author", "title", "description", "url", "url_to_image", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["site_id", 1], ["author", ""], ["title", "Opinion | What could possibly go wrong when Trump goes to Texas?"], ["description", "Even in Texas Trump might be more trouble than he is worth"], ["url", "https://www.washingtonpost.com/news/opinions/wp/2018/09/02/what-could-possibly-go-wrong-when-trump-goes-to-texas/"], ["url_to_image", "https://www.washingtonpost.com/resizer/ZTwYNt6n-B-uN98xYqV6lWkZOf0=/1484x0/arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/2H5NCUNRCY7LXKGTC7BH3OEJIU.jpg"], ["created_at", "2018-09-02 20:22:48.766234"], ["updated_at", "2018-09-02 20:22:48.766234"]]
+  [1m[36m (9.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("site_id", "author", "title", "description", "url", "url_to_image", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["site_id", 1], ["author", ""], ["title", "Analysis | The key players in the Kavanaugh hearings — and what’s at stake for each of them"], ["description", "Everyone's got a political motive."], ["url", "https://www.washingtonpost.com/politics/2018/09/02/key-players-kavanaugh-hearings-whats-stake-each-them/"], ["url_to_image", "https://www.washingtonpost.com/resizer/9J_PMxV4U5P76VPEfkG2ek5eu8E=/1484x0/arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/DFHDWQFHBEI6RLLPBADXBXG5YI.jpg"], ["created_at", "2018-09-02 20:22:48.779566"], ["updated_at", "2018-09-02 20:22:48.779566"]]
+  [1m[35m (9.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("site_id", "author", "title", "description", "url", "url_to_image", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["site_id", 2], ["author", "Fox News"], ["title", "Lanny Davis says he's to blame, not CNN, for controversy over Trump-Russia meeting story"], ["description", "The lawyer for President Trump’s former personal attorney Michael Cohen said he was blaming himself, not CNN, after the network ran a story about Cohen knowing the president had advance knowledge of that Trump Tower meeting with a Russian lawyer offering dirt…"], ["url", "http://www.foxnews.com/politics/2018/09/02/lanny-davis-says-hes-to-blame-not-cnn-for-controversy-over-trump-russia-meeting-story.html"], ["url_to_image", "http://a57.foxnews.com/media2.foxnews.com/BrightCove/694940094001/2018/09/02/0/0/694940094001_5829938554001_5829945106001-vs.jpg?ve=1"], ["created_at", "2018-09-02 20:22:48.791629"], ["updated_at", "2018-09-02 20:22:48.791629"]]
+  [1m[36m (13.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("site_id", "author", "title", "description", "url", "url_to_image", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["site_id", 2], ["author", "Fox News"], ["title", "Are expectations set too high for Democrats in November?"], ["description", "President Trump is aiming to spend more than 40 days on the fall campaign trail to help Republicans keep power in Congress."], ["url", "http://video.foxnews.com/v/5829780620001/\""], ["url_to_image", "http://a57.foxnews.com/media2.foxnews.com/BrightCove/694940094001/2018/09/01/640/360/694940094001_5829772707001_5829780620001-vs.jpg\""], ["created_at", "2018-09-02 20:22:48.807936"], ["updated_at", "2018-09-02 20:22:48.807936"]]
+  [1m[35m (10.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("site_id", "author", "title", "description", "url", "url_to_image", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["site_id", 2], ["author", "Fox News"], ["title", "Media praise McCain, fault Trump"], ["description", "Some fault president for not hailing senator."], ["url", "\"http://video.foxnews.com/v/5829943440001/"], ["url_to_image", "http://a57.foxnews.com/media2.foxnews.com/BrightCove/694940094001/2018/09/02/640/360/694940094001_5829938559001_5829943440001-vs.jpg\""], ["created_at", "2018-09-02 20:22:48.820501"], ["updated_at", "2018-09-02 20:22:48.820501"]]
+  [1m[36m (10.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("site_id", "author", "title", "description", "url", "url_to_image", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["site_id", 3], ["author", ""], ["title", "President Barack Obama's eulogy for Senator John McCain"], ["description", ""], ["url", "https://www.politico.com/video/2018/09/01/180901-mccain-newman-obama1-067249\""], ["url_to_image", "https://static.politico.com/da/f5/44342c424c68b675719324b1106b/politico.jpg"], ["created_at", "2018-09-02 20:22:48.832878"], ["updated_at", "2018-09-02 20:22:48.832878"]]
+  [1m[35m (10.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("site_id", "author", "title", "description", "url", "url_to_image", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["site_id", 3], ["author", "https://www.facebook.com/politico\""], ["title", "Trump allies fume at McCain memorial addresses, urge counterattack"], ["description", "Some even hoped for — but didn’t get — a blistering tweet from the president."], ["url", "https://www.politico.com/story/2018/09/01/trump-mccain-memorial-response-reaction-806113\""], ["url_to_image", "https://static.politico.com/f4/30/585f9c04498ea113d84bba7649cd/180901-protestors-ap-773.jpg\""], ["created_at", "2018-09-02 20:22:48.845740"], ["updated_at", "2018-09-02 20:22:48.845740"]]
+  [1m[36m (11.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("site_id", "author", "title", "description", "url", "url_to_image", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["site_id", 3], ["author", "Tim Alberta"], ["title", "How 'Fake News' Was Born at the 1968 DNC"], ["description", "The madness of the 1968 Democratic National Convention pushed conservatives’ distrust of “the establishment” into overdrive."], ["url", "https://www.politico.com/magazine/story/2018/09/02/how-fake-news-was-born-at-the-1968-dnc-219627\""], ["url_to_image", "https://static.politico.com/d4/8f/8e6f9e404d478067291f3293bd67/gettyimages-138455325.jpg"], ["created_at", "2018-09-02 20:22:48.860032"], ["updated_at", "2018-09-02 20:22:48.860032"]]
+  [1m[35m (12.6ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "sites"[0m
+  [1m[35mSite Load (0.4ms)[0m  SELECT "sites".* FROM "sites"
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."site_id" = ? LIMIT 1  [["site_id", 1]]
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+
+
+Started GET "/" for 216.227.63.207 at 2018-09-02 20:27:18 +0000
+Cannot render console from 216.227.63.207! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/railties-4.2.5/lib/rails/templates/rails/welcome/index.html.erb (3.2ms)
+Completed 200 OK in 34ms (Views: 22.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 216.227.63.207 at 2018-09-02 20:27:19 +0000
+Cannot render console from 216.227.63.207! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/railties-4.2.5/lib/rails/templates/rails/welcome/index.html.erb (0.1ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/sites?id=1" for ::1 at 2018-09-02 21:24:51 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SitesController#index as */*
+  Parameters: {"id"=>"1"}
+  [1m[35mSite Load (0.3ms)[0m  SELECT "sites".* FROM "sites"
+[active_model_serializers]   [1m[36mSiteSearch Load (0.3ms)[0m  [1mSELECT "site_searches".* FROM "site_searches" WHERE "site_searches"."site_id" = ?[0m  [["site_id", 1]]
+[active_model_serializers]   [1m[35mSiteSearch Load (0.1ms)[0m  SELECT "site_searches".* FROM "site_searches" WHERE "site_searches"."site_id" = ?  [["site_id", 2]]
+[active_model_serializers]   [1m[36mSiteSearch Load (0.1ms)[0m  [1mSELECT "site_searches".* FROM "site_searches" WHERE "site_searches"."site_id" = ?[0m  [["site_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (51.4ms)
+Completed 200 OK in 120ms (Views: 94.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/sites?id=1" for ::1 at 2018-09-02 21:25:16 +0000
+Processing by SitesController#index as */*
+  Parameters: {"id"=>"1"}
+  [1m[35mSite Load (0.5ms)[0m  SELECT "sites".* FROM "sites"
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.56ms)
+Completed 200 OK in 12ms (Views: 7.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/sites/1" for ::1 at 2018-09-02 21:26:32 +0000
+Processing by SitesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mSite Load (0.3ms)[0m  [1mSELECT  "sites".* FROM "sites" WHERE "sites"."id" = ? LIMIT 1[0m  [["id", 1]]
+[active_model_serializers] Rendered SiteSerializer with ActiveModelSerializers::Adapter::Attributes (0.32ms)
+Completed 200 OK in 12ms (Views: 0.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/posts?id=1" for ::1 at 2018-09-02 21:27:33 +0000
+Processing by PostsController#index as */*
+  Parameters: {"id"=>"1"}
+  [1m[35mSite Load (0.5ms)[0m  SELECT  "sites".* FROM "sites" WHERE "sites"."id" = ? LIMIT 1  [["id", nil]]
+Completed 404 Not Found in 8ms (ActiveRecord: 1.3ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Site with 'id'=):
+  app/controllers/posts_controller.rb:4:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (42.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (45.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (91.5ms)
+
+
+Started GET "/api/posts?site_id=1" for ::1 at 2018-09-02 21:27:48 +0000
+Processing by PostsController#index as */*
+  Parameters: {"site_id"=>"1"}
+  [1m[36mSite Load (0.2ms)[0m  [1mSELECT  "sites".* FROM "sites" WHERE "sites"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."site_id" = ? LIMIT 1  [["site_id", 1]]
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (0.33ms)
+Completed 200 OK in 23ms (Views: 2.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/posts?site_id=1" for ::1 at 2018-09-02 21:29:00 +0000
+Processing by PostsController#index as */*
+  Parameters: {"site_id"=>"1"}
+  [1m[36mSite Load (0.2ms)[0m  [1mSELECT  "sites".* FROM "sites" WHERE "sites"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE (site_id LIKE '%1%') LIMIT 100
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.82ms)
+Completed 200 OK in 21ms (Views: 8.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/posts?site_id=1" for ::1 at 2018-09-02 21:31:11 +0000
+Processing by PostsController#index as */*
+  Parameters: {"site_id"=>"1"}
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE (site_id LIKE '%1%')[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.72ms)
+Completed 200 OK in 11ms (Views: 7.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/posts" for ::1 at 2018-09-02 21:31:19 +0000
+Processing by PostsController#index as */*
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.42ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.3ms)
+  [1m[36m (10.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (7.3ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateSites (20180901004927)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "sites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "api_name" varchar, "url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180901004927"]]
+  [1m[35m (12.7ms)[0m  commit transaction
+Migrating to CreatePosts (20180901004944)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_id" integer, "author" varchar, "title" varchar, "description" varchar, "url" varchar, "url_to_image" varchar, "published_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180901004944"]]
+  [1m[35m (9.5ms)[0m  commit transaction
+Migrating to AddApiUrlToSite (20180901010806)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "sites" ADD "api_url" varchar
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180901010806"]]
+  [1m[35m (16.6ms)[0m  commit transaction
+Migrating to CreateSearches (20180902201501)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "searches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "search_term" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180902201501"]]
+  [1m[35m (11.7ms)[0m  commit transaction
+Migrating to CreateSiteSearches (20180902201614)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "site_searches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_id" integer, "search_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180902201614"]]
+  [1m[35m (9.4ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSite Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "sites" WHERE "sites"."name" = 'The Washington Post' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "sites" ("name", "api_name", "url", "api_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "The Washington Post"], ["api_name", "the-washington-post"], ["url", "https://www.washingtonpost.com/"], ["api_url", "https://newsapi.org/s/the-washington-post-api"], ["created_at", "2018-09-02 21:38:12.785355"], ["updated_at", "2018-09-02 21:38:12.785355"]]
+  [1m[36m (9.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSite Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "sites" WHERE "sites"."name" = 'Fox News' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sites" ("name", "api_name", "url", "api_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Fox News"], ["api_name", "fox-news"], ["url", "http://www.foxnews.com/"], ["api_url", "https://newsapi.org/s/fox-news-api"], ["created_at", "2018-09-02 21:38:12.799248"], ["updated_at", "2018-09-02 21:38:12.799248"]]
+  [1m[36m (9.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSite Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "sites" WHERE "sites"."name" = 'Politico' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "sites" ("name", "api_name", "url", "api_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Politico"], ["api_name", "politico"], ["url", "https://www.politico.com/"], ["api_url", "https://newsapi.org/s/politico-api"], ["created_at", "2018-09-02 21:38:12.812488"], ["updated_at", "2018-09-02 21:38:12.812488"]]
+  [1m[36m (9.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("site_id", "author", "title", "description", "url", "url_to_image", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["site_id", 1], ["author", ""], ["title", "Opinion | The McCain funeral offered a promise of deliverance at a dark moment in American history"], ["description", "McCain's funeral was a rejection of the ugliness of the Trump years."], ["url", "https://www.washingtonpost.com/news/global-opinions/wp/2018/09/02/the-mccain-funeral-offered-a-promise-of-deliverance-at-a-dark-moment-in-american-history/"], ["url_to_image", "https://www.washingtonpost.com/resizer/u812l52sy63fm2L-H6E0BdqUplA=/1484x0/arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/Y2DZXIHRRE63BGR7HFQWKEKL5E.jpg"], ["created_at", "2018-09-02 21:38:12.836604"], ["updated_at", "2018-09-02 21:38:12.836604"]]
+  [1m[35m (9.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("site_id", "author", "title", "description", "url", "url_to_image", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["site_id", 1], ["author", ""], ["title", "Opinion | What could possibly go wrong when Trump goes to Texas?"], ["description", "Even in Texas Trump might be more trouble than he is worth"], ["url", "https://www.washingtonpost.com/news/opinions/wp/2018/09/02/what-could-possibly-go-wrong-when-trump-goes-to-texas/"], ["url_to_image", "https://www.washingtonpost.com/resizer/ZTwYNt6n-B-uN98xYqV6lWkZOf0=/1484x0/arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/2H5NCUNRCY7LXKGTC7BH3OEJIU.jpg"], ["created_at", "2018-09-02 21:38:12.848966"], ["updated_at", "2018-09-02 21:38:12.848966"]]
+  [1m[36m (15.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("site_id", "author", "title", "description", "url", "url_to_image", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["site_id", 1], ["author", ""], ["title", "Analysis | The key players in the Kavanaugh hearings — and what’s at stake for each of them"], ["description", "Everyone's got a political motive."], ["url", "https://www.washingtonpost.com/politics/2018/09/02/key-players-kavanaugh-hearings-whats-stake-each-them/"], ["url_to_image", "https://www.washingtonpost.com/resizer/9J_PMxV4U5P76VPEfkG2ek5eu8E=/1484x0/arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/DFHDWQFHBEI6RLLPBADXBXG5YI.jpg"], ["created_at", "2018-09-02 21:38:12.867384"], ["updated_at", "2018-09-02 21:38:12.867384"]]
+  [1m[35m (9.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("site_id", "author", "title", "description", "url", "url_to_image", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["site_id", 2], ["author", "Fox News"], ["title", "Lanny Davis says he's to blame, not CNN, for controversy over Trump-Russia meeting story"], ["description", "The lawyer for President Trump’s former personal attorney Michael Cohen said he was blaming himself, not CNN, after the network ran a story about Cohen knowing the president had advance knowledge of that Trump Tower meeting with a Russian lawyer offering dirt…"], ["url", "http://www.foxnews.com/politics/2018/09/02/lanny-davis-says-hes-to-blame-not-cnn-for-controversy-over-trump-russia-meeting-story.html"], ["url_to_image", "http://a57.foxnews.com/media2.foxnews.com/BrightCove/694940094001/2018/09/02/0/0/694940094001_5829938554001_5829945106001-vs.jpg?ve=1"], ["created_at", "2018-09-02 21:38:12.879418"], ["updated_at", "2018-09-02 21:38:12.879418"]]
+  [1m[36m (10.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("site_id", "author", "title", "description", "url", "url_to_image", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["site_id", 2], ["author", "Fox News"], ["title", "Are expectations set too high for Democrats in November?"], ["description", "President Trump is aiming to spend more than 40 days on the fall campaign trail to help Republicans keep power in Congress."], ["url", "http://video.foxnews.com/v/5829780620001/\""], ["url_to_image", "http://a57.foxnews.com/media2.foxnews.com/BrightCove/694940094001/2018/09/01/640/360/694940094001_5829772707001_5829780620001-vs.jpg\""], ["created_at", "2018-09-02 21:38:12.892799"], ["updated_at", "2018-09-02 21:38:12.892799"]]
+  [1m[35m (8.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("site_id", "author", "title", "description", "url", "url_to_image", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["site_id", 2], ["author", "Fox News"], ["title", "Media praise McCain, fault Trump"], ["description", "Some fault president for not hailing senator."], ["url", "\"http://video.foxnews.com/v/5829943440001/"], ["url_to_image", "http://a57.foxnews.com/media2.foxnews.com/BrightCove/694940094001/2018/09/02/640/360/694940094001_5829938559001_5829943440001-vs.jpg\""], ["created_at", "2018-09-02 21:38:12.904020"], ["updated_at", "2018-09-02 21:38:12.904020"]]
+  [1m[36m (8.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("site_id", "author", "title", "description", "url", "url_to_image", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["site_id", 3], ["author", ""], ["title", "President Barack Obama's eulogy for Senator John McCain"], ["description", ""], ["url", "https://www.politico.com/video/2018/09/01/180901-mccain-newman-obama1-067249\""], ["url_to_image", "https://static.politico.com/da/f5/44342c424c68b675719324b1106b/politico.jpg"], ["created_at", "2018-09-02 21:38:12.914910"], ["updated_at", "2018-09-02 21:38:12.914910"]]
+  [1m[35m (8.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("site_id", "author", "title", "description", "url", "url_to_image", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["site_id", 3], ["author", "https://www.facebook.com/politico\""], ["title", "Trump allies fume at McCain memorial addresses, urge counterattack"], ["description", "Some even hoped for — but didn’t get — a blistering tweet from the president."], ["url", "https://www.politico.com/story/2018/09/01/trump-mccain-memorial-response-reaction-806113\""], ["url_to_image", "https://static.politico.com/f4/30/585f9c04498ea113d84bba7649cd/180901-protestors-ap-773.jpg\""], ["created_at", "2018-09-02 21:38:12.925582"], ["updated_at", "2018-09-02 21:38:12.925582"]]
+  [1m[36m (9.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("site_id", "author", "title", "description", "url", "url_to_image", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["site_id", 3], ["author", "Tim Alberta"], ["title", "How 'Fake News' Was Born at the 1968 DNC"], ["description", "The madness of the 1968 Democratic National Convention pushed conservatives’ distrust of “the establishment” into overdrive."], ["url", "https://www.politico.com/magazine/story/2018/09/02/how-fake-news-was-born-at-the-1968-dnc-219627\""], ["url_to_image", "https://static.politico.com/d4/8f/8e6f9e404d478067291f3293bd67/gettyimages-138455325.jpg"], ["created_at", "2018-09-02 21:38:12.937197"], ["updated_at", "2018-09-02 21:38:12.937197"]]
+  [1m[35m (9.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "searches" ("search_term", "created_at", "updated_at") VALUES (?, ?, ?)  [["search_term", "trump"], ["created_at", "2018-09-02 21:38:12.956201"], ["updated_at", "2018-09-02 21:38:12.956201"]]
+  [1m[36m (9.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "searches" ("search_term", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["search_term", "mccain"], ["created_at", "2018-09-02 21:38:12.968250"], ["updated_at", "2018-09-02 21:38:12.968250"]]
+  [1m[35m (7.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "site_searches" ("site_id", "search_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["site_id", 1], ["search_id", 1], ["created_at", "2018-09-02 21:38:12.982599"], ["updated_at", "2018-09-02 21:38:12.982599"]]
+  [1m[36m (7.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "site_searches" ("site_id", "search_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["site_id", 2], ["search_id", 1], ["created_at", "2018-09-02 21:38:12.991835"], ["updated_at", "2018-09-02 21:38:12.991835"]]
+  [1m[35m (9.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "site_searches" ("site_id", "search_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["site_id", 3], ["search_id", 1], ["created_at", "2018-09-02 21:38:13.002657"], ["updated_at", "2018-09-02 21:38:13.002657"]]
+  [1m[36m (8.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "site_searches" ("site_id", "search_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["site_id", 1], ["search_id", 2], ["created_at", "2018-09-02 21:38:13.012829"], ["updated_at", "2018-09-02 21:38:13.012829"]]
+  [1m[35m (9.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "site_searches" ("site_id", "search_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["site_id", 2], ["search_id", 2], ["created_at", "2018-09-02 21:38:13.024789"], ["updated_at", "2018-09-02 21:38:13.024789"]]
+  [1m[36m (9.5ms)[0m  [1mcommit transaction[0m
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "searches"[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "sites"
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "site_searches"
+
+
+Started GET "/api/searches" for ::1 at 2018-09-02 21:39:43 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SearchesController#index as */*
+  [1m[35mSearch Load (0.3ms)[0m  SELECT "searches".* FROM "searches"
+[active_model_serializers]   [1m[36mSiteSearch Load (0.3ms)[0m  [1mSELECT "site_searches".* FROM "site_searches" WHERE "site_searches"."search_id" = ?[0m  [["search_id", 1]]
+[active_model_serializers]   [1m[35mSiteSearch Load (0.2ms)[0m  SELECT "site_searches".* FROM "site_searches" WHERE "site_searches"."search_id" = ?  [["search_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (53.82ms)
+Completed 200 OK in 113ms (Views: 93.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/searches/1" for ::1 at 2018-09-02 21:41:37 +0000
+Processing by SearchesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mSearch Load (0.3ms)[0m  [1mSELECT  "searches".* FROM "searches" WHERE "searches"."id" = ? LIMIT 1[0m  [["id", 1]]
+[active_model_serializers]   [1m[35mSiteSearch Load (0.2ms)[0m  SELECT "site_searches".* FROM "site_searches" WHERE "site_searches"."search_id" = ?  [["search_id", 1]]
+[active_model_serializers] Rendered SearchSerializer with ActiveModelSerializers::Adapter::Attributes (13.67ms)
+Completed 200 OK in 31ms (Views: 15.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/site_searches/1" for ::1 at 2018-09-02 21:42:17 +0000
+Processing by SiteSearchesController#show as */*
+  Parameters: {"id"=>"1"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.11ms)
+Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/site_searches/1" for ::1 at 2018-09-02 21:42:46 +0000
+Processing by SiteSearchesController#show as */*
+  Parameters: {"id"=>"1"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 500 Internal Server Error in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms)
+
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  app/controllers/site_searches_controller.rb:19:in `show'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (34.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (30.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (68.8ms)
+
+
+Started GET "/api/site_searches/1?site_id=1" for ::1 at 2018-09-02 21:43:12 +0000
+Processing by SiteSearchesController#show as */*
+  Parameters: {"site_id"=>"1", "id"=>"1"}
+  [1m[36mSiteSearch Load (0.2ms)[0m  [1mSELECT  "site_searches".* FROM "site_searches" WHERE "site_searches"."site_id" = ? LIMIT 1[0m  [["site_id", 1]]
+[active_model_serializers] Rendered SiteSearchSerializer with ActiveModelSerializers::Adapter::Attributes (0.25ms)
+Completed 200 OK in 10ms (Views: 1.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/site_searches/1?site_id=1" for ::1 at 2018-09-02 21:44:14 +0000
+Processing by SiteSearchesController#show as */*
+  Parameters: {"site_id"=>"1", "id"=>"1"}
+  [1m[35mSiteSearch Load (0.6ms)[0m  SELECT "site_searches".* FROM "site_searches" WHERE (site_id LIKE '%1%')
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+Completed 200 OK in 9ms (Views: 5.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/site_searches/1?search_id=1" for ::1 at 2018-09-02 21:44:27 +0000
+Processing by SiteSearchesController#show as */*
+  Parameters: {"search_id"=>"1", "id"=>"1"}
+  [1m[36mSiteSearch Load (0.3ms)[0m  [1mSELECT "site_searches".* FROM "site_searches" WHERE (search_id LIKE '%1%')[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.34ms)
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 216.227.61.183 at 2018-10-11 18:27:35 +0000
+Cannot render console from 216.227.61.183! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/railties-4.2.5/lib/rails/templates/rails/welcome/index.html.erb (3.0ms)
+Completed 200 OK in 32ms (Views: 20.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 216.227.61.183 at 2018-10-11 18:27:50 +0000
+Cannot render console from 216.227.61.183! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-2.3.4/gems/railties-4.2.5/lib/rails/templates/rails/welcome/index.html.erb (0.1ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
