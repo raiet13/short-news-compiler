@@ -32,6 +32,7 @@
     font-size: 0.80em;
 }
 
+/* https://stackoverflow.com/questions/15124838/how-to-keep-div-on-one-line-and-append-ellipses/15124873#15124873 */
 .textSnippet {
   white-space: nowrap;
   text-overflow: ellipsis;
