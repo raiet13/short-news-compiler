@@ -2,7 +2,7 @@
 // Note : Updated to be hard coded and not use the Site information because unnecessarily level of complexity at the moment
 
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 // import Sites from '../components/sites/Sites';
 
 class Credits extends Component {
