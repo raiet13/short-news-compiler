@@ -1,0 +1,41 @@
+
+/* https://www.w3schools.com/css/css_float.asp */
+.clearfix {
+    overflow: auto;
+}
+
+.shortPost {
+    background-color: #dddddd;
+    padding: 10px;
+    height: auto;
+    width: 500px;
+}
+
+/* https://www.w3schools.com/howto/howto_css_image_responsive.asp */
+.shortPost img {
+    float: left;
+    height: auto;
+    padding-right: 10px;
+    width: 40%;
+}
+
+.shortPost ul {
+    float: right;
+    padding: 10px;
+    background-color: white;
+}
+
+.shortPost li {
+    list-style-type: none;
+    text-align: left;
+    margin: 5px;
+    font-size: 0.80em;
+}
+
+/* https://stackoverflow.com/questions/15124838/how-to-keep-div-on-one-line-and-append-ellipses/15124873#15124873 */
+.textSnippet {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 150px;
+  overflow: hidden;
+}
