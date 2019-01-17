@@ -4,10 +4,12 @@
 import React from 'react';
 
 const Search = ({ search }) => {
+  // <li><strong>Keyword :</strong> {search.search_term} || <em>Searched :</em> {search.created_at} || <em>Sites :</em> The Washington Post, Fox News</li>
+
     return (
         <div className="search clearfix">
             <ul>
-                <li><strong>Keyword :</strong> {search.search_term} || <em>Searched :</em> {search.created_at} || <em>Sites :</em> The Washington Post, Fox News</li>
+                <li>Queried 'The Washington Post, Fox News' for '{search.search_term}' at '{search.created_at}'</li>
             </ul>
         </div>
     );
