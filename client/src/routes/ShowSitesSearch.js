@@ -1,12 +1,20 @@
 // Note : This Route should display expanded information on the site + expanded posts from the specified site + be able to be separately searchable/dynamic
+// *** WIP -- need to use the searchInput properly (has own issues) + display updating + columns need responsiveness fix (stack when window shrunk)
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SearchInput from '../components/searches/SearchInput';
 import Posts from '../components/posts/Posts';
 import '../css/ShowSitePosts.css';
+import { fetchPosts, removePosts } from '../actions/posts'
 
 class ShowSitesSearch extends Component {
+
+  // Generate initial few posts for display? *** OR only filterposts if they exist
+  componentDidMount() {
+    console.log('Need to update input vs display');
+    // fetchPosts('the-washington-post', 'trump');
+  };
 
   // Function to check for posts to search
   checkPosts = (site_id) => {
@@ -27,7 +35,7 @@ class ShowSitesSearch extends Component {
     return (
       <div>
           <h3>ShowSitesSearch -- WIP</h3>
-          <SearchInput />
+          <SearchInput fetchPosts={this.fetchPosts}/>
 
           <div className="row">
             <div className="column">
@@ -43,8 +51,8 @@ class ShowSitesSearch extends Component {
           </div>
       </div>
     );
-  }
-}
+  };
+};
 
 // Get posts from store
 const mapStateToProps = (state) => {
