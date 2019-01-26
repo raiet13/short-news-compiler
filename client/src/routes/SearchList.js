@@ -4,8 +4,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Searches from '../components/searches/Searches';
+import { fetchSearches, fetchSearchesNoDispatch } from '../actions/searches'
 
 class SearchList extends Component {
+
+  componentDidMount() {
+    console.log('Get Searches');
+    fetchSearches();
+    fetchSearchesNoDispatch();
+  };
 
   render() {
     return (

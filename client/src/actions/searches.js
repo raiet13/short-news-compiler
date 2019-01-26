@@ -14,9 +14,21 @@ export function fetchSearches() {
     dispatch({type: 'LOADING_SEARCHES'});
     return fetch(`api/searches`, {
       accept: "application/json"
-    })
-    .then(
-      console.log('fetched search data')
-      );
+    }).then(
+      response => response.json())
+      .then(data => {
+        console.log('fetched search data');
+        console.log(data);
+      });
   };
+}
+
+// Note : Just a test function to ensure that it is working aside from the dispatch...
+export function fetchSearchesNoDispatch() {
+    fetch(`api/searches`, {
+      accept: "application/json"
+    }).then(response => response.json())
+      .then(data => {
+        console.log(data);
+      });
 }
