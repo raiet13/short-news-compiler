@@ -8,6 +8,8 @@ import Posts from '../components/posts/Posts';
 import '../css/ShowSitePosts.css';
 import { fetchPosts, removePosts, fetchPostsNoDispatch } from '../actions/posts'
 
+import TitleDescription from '../components/TitleDescription';
+
 class ShowSitesSearch extends Component {
 
   // Generate initial few posts for display? *** OR only filterposts if they exist
@@ -32,9 +34,14 @@ class ShowSitesSearch extends Component {
   };
 
   render() {
+
+    const showSitesSearchTitle = "ShowSitesSearch -- WIP";
+    const showSitesSearchDescription = "Search specified sites at the same time.";
+
     return (
       <div>
-          <h3>ShowSitesSearch -- WIP</h3>
+          <TitleDescription title={showSitesSearchTitle} description={showSitesSearchDescription} />
+
           <SearchInput fetchPosts={this.fetchPosts}/>
 
           <div className="row">
