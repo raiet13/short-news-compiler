@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Posts from '../components/posts/Posts';
 import ExpandedPost from '../components/posts/ExpandedPost';
 import '../css/ShowSitePosts.css';
+import TitleDescription from '../components/TitleDescription';
 
 class ShowSitePosts extends Component {
 
@@ -18,14 +19,14 @@ class ShowSitePosts extends Component {
   filterPosts = (site_id) => {
     return (this.props.posts.filter(post => post.site_id === site_id));
   };
-  
+
   // Function to display selected post -- ***WIP***
   selectPost = () => {
     // Get selected post on mouse click
     // Update local state "selectedPostId" with selected post id
     // Call "showExpandedPost" function
   };
-  
+
   // Function to display Expanded Post in section (if applicable)
   showExpandedPost = (post_id) => {
     // If post_id then show expanded post
@@ -39,16 +40,20 @@ class ShowSitePosts extends Component {
   }
 
   render() {
+
+    const showSitePostsTitle = "ShowSitePosts -- WIP";
+    const showSitePostsDescription = "WIP";
+
     return (
       <div>
-          <h3>ShowSitePosts -- WIP</h3>
+          <TitleDescription title={showSitePostsTitle} description={showSitePostsDescription} />
 
           <div class="row">
             <div class="column">
               <h3>The Washington Post</h3>
               <Posts posts={this.filterPosts(1)}/>
             </div>
-            
+
             <div class="column">
               <h3>Show Expanded Post</h3>
               <div>{this.showExpandedPost(this.state.selectedPostId)}</div>
@@ -64,5 +69,5 @@ class ShowSitePosts extends Component {
 const mapStateToProps = (state) => {
   return { posts: state.posts };
 };
- 
+
 export default connect(mapStateToProps)(ShowSitePosts);

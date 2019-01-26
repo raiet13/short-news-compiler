@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Searches from '../components/searches/Searches';
 import { fetchSearches, fetchSearchesNoDispatch } from '../actions/searches'
+import TitleDescription from '../components/TitleDescription';
 
 class SearchList extends Component {
 
@@ -15,10 +16,13 @@ class SearchList extends Component {
   };
 
   render() {
+
+    const searchListTitle = "All Completed Searches";
+    const searchListDescription = `This page displays all "searches" conducted by using the "SearchPosts" page.`;
+
     return (
       <div>
-        <h3>All Completed Searches</h3>
-        <h4>Description : This page displays all "searches" conducted by using the "SearchPosts" page.</h4>
+        <TitleDescription title={searchListTitle} description={searchListDescription} />
         <Searches searches={this.props.searches}/>
       </div>
     );
