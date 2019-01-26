@@ -26,7 +26,9 @@ class SearchInput extends React.Component {
         event.preventDefault();
 
         this.props.addSearch(this.state.keyword);
-        this.props.fetchPosts('the-washington-post', this.state.keyword);
+        // this.props.fetchPosts('the-washington-post', this.state.keyword);
+        // this.props.fetchPosts('fox-news', this.state.keyword);
+        this.props.fetchPosts('politico', this.state.keyword);
         // console.log(`Search query : ${this.state.keyword}`);
     };
 
