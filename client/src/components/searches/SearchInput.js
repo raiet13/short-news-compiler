@@ -24,11 +24,9 @@ class SearchInput extends React.Component {
     handleSubmit(event) {
         // alert('Search for: ' + this.state.keyword);
         event.preventDefault();
-
-        this.props.addSearch(this.state.keyword);
-
-        // Get fetch requests -- *** Not registering as prop callback function -- https://learn.co/tracks/full-stack-web-development-v6/react-redux/async-react/react-gif-search-lab
-        // this.props.fetchPosts('the-washington-post', this.state.keyword);
+        
+        // this.props.addSearch(this.state.keyword);
+        this.props.fetchPosts('the-washington-post', this.state.keyword);
         // console.log(`Search query : ${this.state.keyword}`);
     };
 

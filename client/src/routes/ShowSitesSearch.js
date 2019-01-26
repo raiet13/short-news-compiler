@@ -6,8 +6,7 @@ import { connect } from 'react-redux';
 import SearchInput from '../components/searches/SearchInput';
 import Posts from '../components/posts/Posts';
 import '../css/ShowSitePosts.css';
-// import { fetchPosts, removePosts, fetchPostsNoDispatch } from '../actions/posts'
-import { fetchPostsNoDispatch } from '../actions/posts'
+import { fetchPosts, removePosts, fetchPostsNoDispatch } from '../actions/posts'
 
 import TitleDescription from '../components/TitleDescription';
 
@@ -43,7 +42,7 @@ class ShowSitesSearch extends Component {
       <div>
           <TitleDescription title={showSitesSearchTitle} description={showSitesSearchDescription} />
 
-          <SearchInput fetchPosts={this.fetchPosts}/>
+          <SearchInput fetchPosts={this.props.fetchPosts}/>
 
           <div className="row">
             <div className="column">
@@ -67,4 +66,8 @@ const mapStateToProps = (state) => {
   return { posts: state.posts };
 };
 
-export default connect(mapStateToProps)(ShowSitesSearch);
+const mapDispatchToProps = {
+  fetchPosts
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShowSitesSearch);
