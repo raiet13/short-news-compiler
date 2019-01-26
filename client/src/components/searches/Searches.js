@@ -7,8 +7,7 @@ import Search from './Search';
 class Searches extends Component {
 
   render() {
-    const { searches } = this.props;
-    const searchList = searches.map(search => {
+    const searchList = this.props.searches.searches.map(search => {
       return (
         <Search
             key={search.id}
