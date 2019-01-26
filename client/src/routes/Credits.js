@@ -16,11 +16,11 @@ class Credits extends Component {
           <h3>Credits!</h3>
           <p>Sites Used</p>
           <ul>
-            <li><a href="https://www.washingtonpost.com/">The Washington Post</a></li>
-            <li><a href="http://www.foxnews.com/">Fox News</a></li>
-            <li><a href="https://www.politico.com/">Politico</a></li>
+            <li><a href="https://www.washingtonpost.com/" target="_blank">The Washington Post</a></li>
+            <li><a href="http://www.foxnews.com/" target="_blank">Fox News</a></li>
+            <li><a href="https://www.politico.com/" target="_blank">Politico</a></li>
           </ul>
-          <p><a href="https://newsapi.org/">Site information powered by News API</a></p>
+          <p><a href="https://newsapi.org/" target="_blank">Site information powered by News API</a></p>
       </div>
     );
   }
