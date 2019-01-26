@@ -10,7 +10,7 @@ import TitleDescription from '../components/TitleDescription';
 class SearchList extends Component {
 
   componentDidMount() {
-    console.log('Get Searches');
+    // console.log('Get Searches');
     this.props.fetchSearches();
   };
 

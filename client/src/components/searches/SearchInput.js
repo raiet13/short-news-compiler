@@ -1,7 +1,9 @@
 // Note : Component for creating new Searches -- ***WIP fetchPosts prop function
 import React from 'react';
+import { connect } from 'react-redux'
+import { addSearch } from '../../actions/searches'
 
-export default class SearchInput extends React.Component {
+class SearchInput extends React.Component {
 
     // Set up component's local state and functions
     constructor(props) {
@@ -23,11 +25,11 @@ export default class SearchInput extends React.Component {
         // alert('Search for: ' + this.state.keyword);
         event.preventDefault();
 
-
+        this.props.addSearch(this.state.keyword);
 
         // Get fetch requests -- *** Not registering as prop callback function -- https://learn.co/tracks/full-stack-web-development-v6/react-redux/async-react/react-gif-search-lab
         // this.props.fetchPosts('the-washington-post', this.state.keyword);
-        console.log(`Search query : ${this.state.keyword}`);
+        // console.log(`Search query : ${this.state.keyword}`);
     };
 
     // Display Input/Form
@@ -44,3 +46,9 @@ export default class SearchInput extends React.Component {
         );
     };
 };
+
+const mapDispatchToProps = {
+  addSearch
+}
+
+export default connect(null, mapDispatchToProps)(SearchInput);
