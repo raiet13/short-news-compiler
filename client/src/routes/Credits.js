@@ -22,10 +22,10 @@ class Credits extends Component {
       <div>
           <TitleDescription title={creditTitle} description={creditDescription} />
           <ul>
-            <li><a href="https://www.washingtonpost.com/" target="_blank">The Washington Post</a></li>
-            <li><a href="http://www.foxnews.com/" target="_blank">Fox News</a></li>
+            <li><a href="https://www.washingtonpost.com/" rel="noopener">The Washington Post</a></li>
+            <li><a href="http://www.foxnews.com/" rel="noopener">Fox News</a></li>
           </ul>
-          <p><a href="https://newsapi.org/" target="_blank">Site information powered by News API</a></p>
+          <p><a href="https://newsapi.org/" rel="noopener">Site information powered by News API</a></p>
       </div>
     );
   }
