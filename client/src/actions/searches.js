@@ -9,12 +9,13 @@ export function addSearch(search) {
       body: JSON.stringify({search_term: search}),
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }})
     .then( response => {
-      debugger;
+      // debugger;
       console.log('posted new search to database : ', response)
       dispatch({type: 'ADD_SEARCH', payload: search})
     });
   };
 };
+
 
 // Fetch existing searches from database
 export function fetchSearches() {
