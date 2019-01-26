@@ -2,7 +2,7 @@
 // Note : *** WIP -- cut char limit for title (tried using "textSnippet" class, need to confirm during testing -- https://stackoverflow.com/questions/15124838/how-to-keep-div-on-one-line-and-append-ellipses/15124873#15124873) and have author be the site name if one is not found
 
 import React from 'react';
-import '../../css/ShortPost.css';
+// import '../../css/ShortPost.css';
 
 const ShortPost = ({ post }) => {
 
