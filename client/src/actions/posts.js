@@ -12,7 +12,6 @@ export const removePosts = () => {
 
 export function fetchPosts(siteAPI, query) {
   return(dispatch) => {
-
     console.log(`Search : ${siteAPI} for '${query}'`);
     let fetchURL = `https://newsapi.org/v2/top-headlines?sources=${siteAPI}`;
     if (query) { fetchURL += `&q=${query}` };

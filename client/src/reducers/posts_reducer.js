@@ -4,7 +4,7 @@
 
 export default function postsReducer(state =
     { loading: false, headlines: [] }, action) {
-    console.log('posts reducer action : ', action)
+    // console.log('posts reducer action : ', action)
 
     switch (action.type) {
 
