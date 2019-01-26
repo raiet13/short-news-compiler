@@ -9,12 +9,20 @@ import TitleDescription from '../components/TitleDescription';
 
 class SearchList extends Component {
 
+  constructor(props) {
+      super(props);
+      this.state = {
+          searches: []
+      };
+  }
+
   componentDidMount() {
     console.log('Get Searches');
-    fetchSearches();
-    fetchSearchesNoDispatch();
+    this.props.fetchSearches();
+    // fetchSearchesNoDispatch();
   };
 
+  // <Searches searches={this.props.searches}/>
   render() {
 
     const searchListTitle = "All Completed Searches";
@@ -23,7 +31,7 @@ class SearchList extends Component {
     return (
       <div>
         <TitleDescription title={searchListTitle} description={searchListDescription} />
-        <Searches searches={this.props.searches}/>
+        <Searches searches={this.state.searches}/>
       </div>
     );
   };
@@ -31,4 +39,8 @@ class SearchList extends Component {
 
 const mapStateToProps = store => ({ searches: store.searches })
 
-export default connect(mapStateToProps)(SearchList);
+const mapDispatchToProps = {
+  fetchSearches
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchList);

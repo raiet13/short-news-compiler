@@ -5,11 +5,13 @@
 
 export default function searchesReducer(state = [], action) {
     console.log('searches reducer action : ', action)
-    
+
     switch (action.type) {
-    
-        default:
-          return state;
+      case 'FETCH_SEARCHES':
+        debugger
+
+      default:
+        return state;
     }
 
 }

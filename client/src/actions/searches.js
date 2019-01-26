@@ -10,17 +10,16 @@ export const addSearch = search => {
 
 // Fetch existing searches from database
 export function fetchSearches() {
-  return(dispatch) => {
+  return dispatch => {
     console.log("loading searches");
     dispatch({type: 'LOADING_SEARCHES'});
-    return fetch(`api/searches`, {
-      accept: "application/json"
-    }).then(
-      response => response.json())
-      .then(data => {
-        console.log('fetched search data');
-        console.log(data);
-      });
+
+    return fetch(`http://localhost:3001/api/searches`)
+      .then(response => response.json())
+      .then(data => dispatch({
+        type: 'FETCH_SEARCHES',
+        payload: data
+      }));
   };
 };
 
