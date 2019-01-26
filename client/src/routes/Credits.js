@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 // import Sites from '../components/sites/Sites';
 
+// import TitleDescription from '../components/TitleDescription';
+
 class Credits extends Component {
 
   // Note : Replaces the hard-coded list of sites
