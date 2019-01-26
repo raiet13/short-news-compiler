@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import NavBar from './components/NavBar';
 import Home from './routes/Home';
-import ShowSitePosts from './routes/ShowSitePosts';
+// import ShowSitePosts from './routes/ShowSitePosts';
 import ShowSitesSearch from './routes/ShowSitesSearch';
 import SearchList from './routes/SearchList';
 import Credits from './routes/Credits';

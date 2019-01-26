@@ -12,7 +12,7 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
 // NOTE : Adding seed data to store for pre-API development purposes -- https://redux.js.org/recipes/structuringreducers/initializingstate
-import seedData from './seedData';
+// import seedData from './seedData';
 
 // Require dotenv to access the API Keys
 require('dotenv').config()
