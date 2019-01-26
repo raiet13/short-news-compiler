@@ -10,7 +10,7 @@ const TitleDescription = ({ title, description }) => {
           </div>
 
           <div className="description">
-            <p>{description}</p>
+            <p><strong>Description:</strong> <em>{description}</em></p>
           </div>
 
         </div>
