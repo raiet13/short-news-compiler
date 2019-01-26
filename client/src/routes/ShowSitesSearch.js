@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 import SearchInput from '../components/searches/SearchInput';
 import Posts from '../components/posts/Posts';
 import '../css/ShowSitePosts.css';
-import { fetchPosts, removePosts, fetchPostsNoDispatch } from '../actions/posts'
+// import { fetchPosts, removePosts, fetchPostsNoDispatch } from '../actions/posts'
+import { fetchPostsNoDispatch } from '../actions/posts'
 
 import TitleDescription from '../components/TitleDescription';
 
@@ -21,7 +22,7 @@ class ShowSitesSearch extends Component {
   // Function to check for posts to search
   checkPosts = (site_id) => {
     console.log(`Num posts : ${this.props.posts.length}`);
-    if (this.props.posts.length != undefined && this.props.posts.length > 0) {
+    if (this.props.posts.length !== undefined && this.props.posts.length > 0) {
       return (<Posts posts={this.filterPosts(site_id)}/>)
     } else {
       return ('Search keyword to display posts');
