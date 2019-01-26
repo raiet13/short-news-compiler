@@ -6,7 +6,7 @@ const TitleDescription = ({ title, description }) => {
         <div className="titledescription clearfix">
 
           <div className="title">
-            <p>{title}</p>
+            <h3>{title}</h3>
           </div>
 
           <div className="description">
