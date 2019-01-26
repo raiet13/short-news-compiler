@@ -12,11 +12,10 @@ export const removePosts = () => {
 
 export function fetchPosts(siteAPI, query) {
   return(dispatch) => {
-    console.log(`Search : ${siteAPI} for '${query}'`);
+    // console.log(`Search : ${siteAPI} for '${query}'`);
     let fetchURL = `https://newsapi.org/v2/top-headlines?sources=${siteAPI}`;
     if (query) { fetchURL += `&q=${query}` };
     dispatch({type: 'LOADING_POSTS'});
-
     fetch(fetchURL, {
           crossDomain:true,
           method: 'GET',
@@ -25,22 +24,8 @@ export function fetchPosts(siteAPI, query) {
         .then(data => {
           console.log(data);
           // ***UPDATE "articles" to include site_id info
-          dispatch({ type: 'FETCH_POSTS', articles: data.articles })
+          dispatch({ type: 'FETCH_POSTS', articles: data.articles });
+          // debugger;
       });
     };
-};
-
-// Note : Just a test function to ensure that it is working aside from the dispatch...
-export function fetchPostsNoDispatch(siteAPI, query) {
-    console.log(`Search : ${siteAPI} for '${query}'`);
-    let fetchURL = `https://newsapi.org/v2/top-headlines?sources=${siteAPI}`;
-    if (query) { fetchURL += `&q=${query}` };
-    fetch(fetchURL, {
-          crossDomain:true,
-          method: 'GET',
-          headers: {'Authorization':newsApiKey}
-        }).then(response => response.json())
-        .then(data => {
-          console.log(data);
-      });
 };

@@ -6,17 +6,11 @@ import { connect } from 'react-redux';
 import SearchInput from '../components/searches/SearchInput';
 import Posts from '../components/posts/Posts';
 import '../css/ShowSitePosts.css';
-import { fetchPosts, removePosts, fetchPostsNoDispatch } from '../actions/posts'
+import { fetchPosts, removePosts } from '../actions/posts'
 
 import TitleDescription from '../components/TitleDescription';
 
 class ShowSitesSearch extends Component {
-
-  // Generate initial few posts for display? *** OR only filterposts if they exist
-  componentDidMount() {
-    console.log('Need to update input vs display');
-    fetchPostsNoDispatch('the-washington-post', 'trump');
-  };
 
   // Function to check for posts to search
   checkPosts = (site_id) => {
