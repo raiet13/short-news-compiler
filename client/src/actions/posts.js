@@ -24,7 +24,7 @@ export function fetchPosts(siteAPI, query) {
         .then(data => {
           console.log(data);
           // ***UPDATE "articles" to include site_id info
-          dispatch({ type: 'FETCH_POSTS', articles: data.articles });
+          dispatch({ type: 'FETCH_POSTS', payload: data.articles });
           // debugger;
       });
     };

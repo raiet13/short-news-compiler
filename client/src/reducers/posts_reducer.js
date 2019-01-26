@@ -3,7 +3,7 @@
 // Update this to deal with various posts/sites -- https://learn.co/tracks/full-stack-web-development-v6/redux/redux-library/combine-reducers-codealong
 
 export default function postsReducer(state =
-    { loading: false, headlines: [] }, action) {
+    { loading: false, articles: [] }, action) {
     // console.log('posts reducer action : ', action)
 
     switch (action.type) {
@@ -12,7 +12,7 @@ export default function postsReducer(state =
           console.log('Remove Existing Posts')
             return {
                 loading: false,
-                headlines: []
+                articles: []
             }
 
         case 'LOADING_POSTS':
@@ -23,7 +23,7 @@ export default function postsReducer(state =
             console.log('Fetch Posts')
             return {
                 loading: false,
-                headlines: action.articles
+                articles: action.payload
             }
 
         default:

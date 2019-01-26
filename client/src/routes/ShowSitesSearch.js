@@ -14,8 +14,9 @@ class ShowSitesSearch extends Component {
 
   // Function to check for posts to search
   checkPosts = (site_id) => {
-    console.log(`Num posts : ${this.props.posts.length}`);
-    if (this.props.posts.length !== undefined && this.props.posts.length > 0) {
+    console.log(`Num posts : ${this.props.posts.articles.length}`);
+    if (this.props.posts.articles.length !== undefined && this.props.posts.articles.length > 0) {
+      console.log('show posts');
       return (<Posts posts={this.filterPosts(site_id)}/>)
     } else {
       return ('Search keyword to display posts');
@@ -24,7 +25,7 @@ class ShowSitesSearch extends Component {
 
   // Function to filter posts by site id
   filterPosts = (site_id) => {
-    return (this.props.posts.filter(post => post.site_id === site_id));
+    return (this.props.posts.articles.filter(post => post.site_id === site_id));
   };
 
   render() {
@@ -39,14 +40,15 @@ class ShowSitesSearch extends Component {
           <SearchInput fetchPosts={this.props.fetchPosts}/>
 
           <div className="row">
+
             <div className="column">
-              <h3>The Washington Post</h3>
-              {this.checkPosts(1)}
+              <h3>All Posts</h3>
+              <Posts posts={this.props.posts.articles}/>
             </div>
 
             <div className="column">
-              <h3>Fox News</h3>
-              {this.checkPosts(2)}
+              <h3>The Washington Post</h3>
+              {this.checkPosts(1)}
             </div>
 
           </div>
@@ -54,6 +56,12 @@ class ShowSitesSearch extends Component {
     );
   };
 };
+
+//
+// <div className="column">
+//   <h3>Fox News</h3>
+//   {this.checkPosts(2)}
+// </div>
 
 // Get posts from store
 const mapStateToProps = (state) => {

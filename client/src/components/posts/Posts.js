@@ -10,7 +10,7 @@ class Posts extends Component {
     const postList = posts.map(post => {
       return (
         <ShortPost
-            key={post.id}
+            key={post.url}
             post={post}
         />
       )
