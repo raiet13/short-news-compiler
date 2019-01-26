@@ -11,6 +11,7 @@ export const addSearch = search => {
 // Fetch existing searches from database
 export function fetchSearches() {
   return(dispatch) => {
+    console.log("loading searches");
     dispatch({type: 'LOADING_SEARCHES'});
     return fetch(`api/searches`, {
       accept: "application/json"
@@ -21,14 +22,15 @@ export function fetchSearches() {
         console.log(data);
       });
   };
-}
+};
 
 // Note : Just a test function to ensure that it is working aside from the dispatch...
 export function fetchSearchesNoDispatch() {
-    fetch(`api/searches`, {
-      accept: "application/json"
+  console.log('fetching searches, no dispatch');
+  fetch(`api/searches`, {
+    accept: "application/json"
     }).then(response => response.json())
       .then(data => {
         console.log(data);
-      });
-}
+  });
+};
