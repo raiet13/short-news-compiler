@@ -46,10 +46,6 @@ class ShowSitesSearch extends Component {
               <Posts posts={this.props.posts.articles}/>
             </div>
 
-            <div className="column">
-              <h3>The Washington Post</h3>
-              {this.checkPosts(1)}
-            </div>
 
           </div>
       </div>
@@ -57,6 +53,10 @@ class ShowSitesSearch extends Component {
   };
 };
 
+// <div className="column">
+//   <h3>The Washington Post</h3>
+//   {this.checkPosts(1)}
+// </div>
 //
 // <div className="column">
 //   <h3>Fox News</h3>
