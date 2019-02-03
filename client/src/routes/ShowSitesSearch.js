@@ -25,6 +25,7 @@ class ShowSitesSearch extends Component {
 
   // Function to filter posts by site id
   filterPosts = (site_id) => {
+    console.log(`filter posts by site id: ${site_id}`);
     return (this.props.posts.articles.filter(post => post.site_id === site_id));
   };
 
@@ -37,7 +38,7 @@ class ShowSitesSearch extends Component {
       <div>
           <TitleDescription title={showSitesSearchTitle} description={showSitesSearchDescription} />
 
-          <SearchInput fetchPosts={this.props.fetchPosts}/>
+          <SearchInput fetchPosts={this.props.fetchPosts} />
 
           <div className="row">
 
