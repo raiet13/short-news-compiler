@@ -12,7 +12,7 @@ export const removePosts = () => {
 
 export function fetchPosts(siteAPI, query) {
   return(dispatch) => {
-    // console.log(`Search : ${siteAPI} for '${query}'`);
+    console.log(`Search : ${siteAPI} for '${query}'`);
     let fetchURL = `https://newsapi.org/v2/top-headlines?sources=${siteAPI}`;
     if (query) { fetchURL += `&q=${query}` };
     dispatch({type: 'LOADING_POSTS'});
@@ -22,7 +22,10 @@ export function fetchPosts(siteAPI, query) {
           headers: {'Authorization':newsApiKey}
         }).then(response => response.json())
         .then(data => {
+          console.log(`site: ${siteAPI}`);
           console.log(data);
+          const newData = {...data, site: siteAPI}
+          console.log(newData);
           // ***UPDATE "articles" to include site_id info
           dispatch({ type: 'FETCH_POSTS', payload: data.articles });
           // debugger;
