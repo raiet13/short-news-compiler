@@ -12,7 +12,6 @@ class SearchesController < ApplicationController
     end
 
     def create
-        binding.pry
         search = Search.create(search_params)
         render json: search, status: 200
     end
