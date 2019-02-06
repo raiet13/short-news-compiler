@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://wip-learn-redux-project-compiler-confizzed13.c9users.io:8081/",
+  "proxy": "http://localhost:3001/",
   "babel": {
     "presets": [
       "airbnb",

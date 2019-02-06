@@ -26,7 +26,8 @@
 export function fetchSearches() {
   return dispatch => {
     dispatch({type: 'LOADING_SEARCHES'});
-    return fetch(`http://localhost:3001/api/searches`)
+    // return fetch(`http://localhost:3001/api/searches`)
+    return fetch(`https://wip-learn-redux-project-compiler-confizzed13.c9users.io:8081/api/searches`)
       .then(response => response.json())
       .then(data => dispatch({
         type: 'FETCH_SEARCHES',
